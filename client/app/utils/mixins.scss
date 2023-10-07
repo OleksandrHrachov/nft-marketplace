@@ -1,0 +1,91 @@
+@mixin link-underline {
+  &:after {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    content: '';
+    height: 0;
+    width: 0;
+    background-color: transparent;
+    transition: all 0.3s;
+  }
+
+  &:before {
+    position: absolute;
+    bottom: 10px;
+    right: 50%;
+    content: '';
+    height: 0;
+    width: 0;
+    background-color: transparent;
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    &:after {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      content: '';
+      height: 2px;
+      width: 40%;
+      background-color: var(--white);
+    }
+
+    &:before {
+      position: absolute;
+      bottom: 10px;
+      right: 50%;
+      content: '';
+      height: 2px;
+      width: 40%;
+      background-color: var(--white);
+    }
+  }
+}
+
+@mixin button-underline {
+  &:after {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    content: '';
+    height: 2px;
+    width: 0;
+    background-color: transparent;
+    transition: all 0.3s;
+  }
+
+  &:before {
+    position: absolute;
+    bottom: 10px;
+    right: 50%;
+    content: '';
+    height: 2px;
+    width: 0;
+    background-color: transparent;
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    &:after {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      content: '';
+      height: 2px;
+      width: 40%;
+      background-color: var(--white);
+    }
+
+    &:before {
+      position: absolute;
+      bottom: 10px;
+      right: 50%;
+      content: '';
+      height: 2px;
+      width: 40%;
+      background-color: var(--white);
+    }
+  }
+}
