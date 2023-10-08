@@ -1,6 +1,10 @@
-import Image from "next/image";
-import styles from "./page.module.scss";
+import "./Home.scss";
+import { BannerSection } from "./components/BannerSection";
 
 export default function Home() {
-  return <main className={styles.main}>Digital</main>;
+  return (
+    <main className="main">
+      <BannerSection />
+    </main>
+  );
 }
