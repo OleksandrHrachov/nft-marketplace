@@ -1,3 +1,27 @@
+@mixin onMobile {
+  @media (max-width: 834px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 835px) and (max-width: 1080px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1081px) and (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin onDesktopLarge {
+  @media (min-width: 1201px) {
+    @content;
+  }
+}
+
 @mixin link-underline {
   &:after {
     position: absolute;

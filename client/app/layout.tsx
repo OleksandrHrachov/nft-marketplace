@@ -6,7 +6,7 @@ import favicon from '../public/favicon.svg'
 
 const workSans = Work_Sans({
   subsets: ["latin"],
-  weight: ["400", "600", "900"],
+  weight: ["400", "600", "700", "900"],
 });
 
 export const metadata: Metadata = {

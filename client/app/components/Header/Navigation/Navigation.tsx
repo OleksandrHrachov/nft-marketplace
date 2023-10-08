@@ -1,18 +1,9 @@
-'use client'
-
 import Link from "next/link";
 import "./Navigation.scss";
-import { Button } from "../../Button";
 import userIcon from "../../../../public/userIcon.svg";
-import { useRouter } from 'next/navigation';
-import Image from "next/image";
+import { CustomLink } from "../../CustomLink";
 
 export default function Navigation() {
-  const router = useRouter();
-
-  const onSignUp = () => router.push('/signup');
-
-
   return (
     <div className="nav">
       <nav className="nav__menu">
@@ -26,9 +17,9 @@ export default function Navigation() {
           Connect a wallet
         </Link>
       </nav>
-      <Button handleClick={onSignUp} iconSrc={userIcon} iconAlt="user" iconHeight={20} iconWidth={20}>
+      <CustomLink href="/signup" iconSrc={userIcon} iconAlt="user" iconHeight={20} iconWidth={20}>
         Sign Up
-      </Button>
+      </CustomLink>
     </div>
   );
 }

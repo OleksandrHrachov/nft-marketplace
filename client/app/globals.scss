@@ -1,5 +1,6 @@
 :root {
   --primary-background: #2B2B2B;
+  --gray3B: #3B3B3B;
   --white: #fff;
   --purple: #A259FF;
 }
@@ -22,6 +23,10 @@ body {
   flex-direction: column;
   margin: 0 auto;
   color: var(--white);
+}
+
+.container {
+  padding: 80px 115px;
 }
 
 a {

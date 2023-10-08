@@ -2,12 +2,10 @@ import mongoose from "mongoose";
 
 const AssetSchema = new mongoose.Schema({
   assetName: { type: String, required: true },
-  imgUrl: {
-    desktop: { type: String },
-    tablet: { type: String },
-    mobile: { type: String },
-  },
+  imgUrl: { type: String },
   createdBy: { type: String, required: true },
+  price: { type: Number, required: true },
+  highestBid: { type: Number, default: 0 },
 });
 
 export const assetModel = mongoose.model("Asset", AssetSchema);
