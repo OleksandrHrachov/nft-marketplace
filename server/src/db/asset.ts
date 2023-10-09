@@ -4,8 +4,12 @@ const AssetSchema = new mongoose.Schema({
   assetName: { type: String, required: true },
   imgUrl: { type: String },
   createdBy: { type: String, required: true },
+  createdAt: { type: String, required: true },
+  description: { type: String },
   price: { type: Number, required: true },
   highestBid: { type: Number, default: 0 },
+  tags: { type: Array, default: [] },
+  detailsLink: { type: String, required: true },
 });
 
 export const assetModel = mongoose.model("Asset", AssetSchema);
