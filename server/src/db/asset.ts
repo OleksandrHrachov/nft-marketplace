@@ -15,4 +15,6 @@ const AssetSchema = new mongoose.Schema({
 export const assetModel = mongoose.model("Asset", AssetSchema);
 
 export const getAllAssets = () => assetModel.find();
+export const getCreatedBy = (createdByAttistId: string) =>
+  assetModel.find({createdBy: createdByAttistId});
 export const getAssetById = (id: string) => assetModel.findById(id);
