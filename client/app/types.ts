@@ -4,10 +4,6 @@ export enum Breakpoints {
   MOBILE = 375,
 }
 
-// export const BASE_URL = 'http://localhost:5000';
-// export const BANNER_URL = "http://localhost:5000/nft/banner";
-// export const ARTIST_URL = "http://localhost:5000/nft/artist";
-
 export interface IBanner {
   _id: string;
   assetName: string;
@@ -17,7 +13,19 @@ export interface IBanner {
   creatorAvatarUrl: string;
 }
 
-export interface IArtist {
+export interface ICreator {
+  _id: string;
   nickName: string;
-  avatarUrl?: string;
+  avatarUrl: string;
+  volume: number;
+  soldNft: number;
+  followers: number;
+  bio: string;
+  socialLinks: {
+    youtube: string;
+    twitter: string;
+    instagram: string;
+  };
+  assets: unknown[];
+  totalSales: number;
 }
