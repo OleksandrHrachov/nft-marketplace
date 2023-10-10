@@ -28,7 +28,7 @@ export default async function TopCreatorsSection() {
         <div className="creators__header-button">
           <CustomLink
             iconClassName="creators__header-button-icon"
-            href="/signup"
+            href="/rankings"
             variant="outline"
             iconSrc={rocketIcon}
             iconAlt="rocket"
