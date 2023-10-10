@@ -2,16 +2,26 @@ require("dotenv").config();
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import { graphqlHTTP } from "express-graphql";
 import { routers } from "./router";
+import { rootSchema }from './schema';
 
 const PORT = process.env.PORT || 5000;
-
 const app = express();
 
 app.use(cors());
-app.use(express.static('./src/public'));
+app.use(express.static("./src/public"));
 app.use(express.json());
-app.use("/nft", routers);
+
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    schema: rootSchema,
+    graphiql: true,
+  })
+);
+
+// app.use("/nft", routers);
 
 const start = async () => {
   try {

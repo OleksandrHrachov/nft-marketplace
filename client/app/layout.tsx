@@ -2,7 +2,7 @@ import "./globals.scss";
 import type { Metadata } from "next";
 import { Work_Sans } from "next/font/google";
 import { Header } from "./components/Header";
-import favicon from '../public/favicon.svg'
+import favicon from "../public/favicon.svg";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -11,8 +11,7 @@ const workSans = Work_Sans({
 
 export const metadata: Metadata = {
   title: "NFT marketplace",
-  icons: [{ rel: 'icon', url: favicon.src }],
-  
+  icons: [{ rel: "icon", url: favicon.src }]
 };
 
 export default function RootLayout({
@@ -23,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={workSans.className}>
-        <Header/>
+        <Header />
         {children}
         <footer>footer</footer>
       </body>

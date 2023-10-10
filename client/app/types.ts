@@ -11,8 +11,10 @@ export enum Breakpoints {
 export interface IBanner {
   _id: string;
   assetName: string;
-  imgUrl: string,
-  createdBy: string,
+  imgUrl: string;
+  createdBy: string;
+  creatorNickName: string;
+  creatorAvatarUrl: string;
 }
 
 export interface IArtist {
