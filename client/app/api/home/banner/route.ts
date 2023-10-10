@@ -8,6 +8,7 @@ export async function GET(req: Request) {
   const query = gql`
     query {
       banner {
+        _id
         assetName
         createdBy
         imgUrl
@@ -21,7 +22,10 @@ export async function GET(req: Request) {
     .query<{ banner: IBanner }>({
       query,
     })
-    .then((res) => res.data.banner);
+    .then((res) => res.data.banner)
+    .catch(e => {
+      console.log('ERROR home-banner-route =>', e);
+    });
 
   return NextResponse.json(banner);
 }

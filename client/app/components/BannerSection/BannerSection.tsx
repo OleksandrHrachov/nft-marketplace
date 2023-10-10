@@ -4,6 +4,7 @@ import { IBanner } from "../../types";
 import { BASE_URL } from '../../utils/endpoint';
 import { CustomLink } from "../CustomLink";
 import { ImageComponent } from "../ImageComponent";
+import Link from "next/link";
 
 const getBanner = async (): Promise<IBanner> => {
   const banner = await fetch("http://localhost:3000/api/home/banner", {
@@ -52,7 +53,7 @@ export default async function BannerSection() {
           </div>
         </div>
       </div>
-      <div className="banner__image">
+      <Link href={`/nft/${bannerData._id}`} className="banner__image">
         <ImageComponent
           imgClass="banner__image-banner"
           src={`${BASE_URL}/${bannerData.imgUrl}` || ""}
@@ -82,7 +83,7 @@ export default async function BannerSection() {
             </span>
           </div>
         </div>
-      </div>
+      </Link>
     </section>
   );
 }

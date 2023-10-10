@@ -20,12 +20,11 @@ export async function GET(req: Request) {
     .query<{ artists: ICreator[] }>({
       query,
     })
-    .then((res) => res.data).catch(e => {
-      console.log('home-creators-route');
+    .then((res) => res.data)
+    .catch(e => {
+      console.log('ERROR home-creators-route =>', e);
       return {artists: []}
     })
 
     return NextResponse.json(creators.artists);
-  
-
-}
+};

@@ -29,3 +29,9 @@ export interface ICreator {
   assets: unknown[];
   totalSales: number;
 }
+
+export interface ICategory {
+  imageUrl: string;
+  iconUrl: string;
+  category: string;
+}

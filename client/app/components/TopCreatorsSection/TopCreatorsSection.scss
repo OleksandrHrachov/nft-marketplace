@@ -8,11 +8,8 @@
     margin-bottom: 60px;
 
     &-title {
-      font-weight: 600;
-      font-size: 38px;
-      line-height: 46px;
+      @include section-title;
       margin-bottom: 10px;
-      text-transform: capitalize;
     }
 
     &-description {
