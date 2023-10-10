@@ -113,3 +113,21 @@
     }
   }
 }
+
+@mixin scroll-bar {
+  &::-webkit-scrollbar {
+    position: absolute;
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    position: absolute;
+    background: var(--primary-background);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--gray85);
+    border-radius: 20px;
+    border: 3px solid var(--primary-background);
+  }
+}

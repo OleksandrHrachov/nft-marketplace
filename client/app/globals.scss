@@ -1,10 +1,12 @@
+@import './utils//mixins.scss';
+
 :root {
   --primary-background: #2B2B2B;
   --gray3B: #3B3B3B;
+  --gray85: #858584;
   --white: #fff;
   --purple: #A259FF;
 }
-
 
 * {
   box-sizing: border-box;
@@ -23,6 +25,8 @@ body {
   flex-direction: column;
   margin: 0 auto;
   color: var(--white);
+
+  @include scroll-bar;
 }
 
 .container {
@@ -64,4 +68,3 @@ a {
     border: 2px solid var(--purple);
   }
 }
-

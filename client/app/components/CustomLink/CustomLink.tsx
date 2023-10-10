@@ -11,7 +11,7 @@ interface IProps {
   iconWidth?: number;
   iconHeight?: number;
   href: string;
-  customClassName?: string;
+  iconClassName?: string;
 }
 
 export default function CustomLink({
@@ -22,7 +22,7 @@ export default function CustomLink({
   iconWidth = 20,
   iconHeight = 20,
   href,
-  customClassName = ''
+  iconClassName = ''
 }: IProps) {
   return (
     <Link
@@ -31,7 +31,7 @@ export default function CustomLink({
     >
       {iconSrc && (
         <Image
-          className={`link__icon ${customClassName}`}
+          className={`link__icon ${iconClassName}`}
           src={iconSrc}
           alt={iconAlt}
           width={iconWidth}
