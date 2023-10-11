@@ -19,7 +19,7 @@ const SocialLinksType = new GraphQLObjectType({
   }),
 });
 
-export const ArtistType = new GraphQLObjectType({
+export const ArtistType: GraphQLObjectType = new GraphQLObjectType({
   name: "Artist",
   fields: () => ({
     _id: { type: GraphQLID },
@@ -32,9 +32,8 @@ export const ArtistType = new GraphQLObjectType({
     socialLinks: { type: SocialLinksType },
     assets: {
       type: new GraphQLList(AssetType),
-      args: { createdBy: { type: GraphQLString } },
       resolve(parent, args) {
-        return getCreatedBy(args.createdBy);
+        return getCreatedBy(parent._id);
       },
     },
     totalSales: { type: GraphQLFloat },

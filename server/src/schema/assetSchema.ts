@@ -5,8 +5,8 @@ import {
   GraphQLList,
   GraphQLFloat
 } from "graphql";
-// import { ArtistType } from './artistSchema';
-// import { getArtistById } from "../db/artist";
+import { ArtistType } from './artistSchema';
+import { getArtistById } from "../db/artist";
 
 interface IMyAssetType {
   name: string;
@@ -14,7 +14,6 @@ interface IMyAssetType {
     _id: string;
     assetName: string;
     imgUrl: string;
-    // createdBy: { type: GraphQLString },
     createdBy: {
       type: unknown,
       args: { [key: string]: string },
@@ -29,26 +28,24 @@ interface IMyAssetType {
   }),
 }
 
-export const AssetType = new GraphQLObjectType({
+export const AssetType: GraphQLObjectType = new GraphQLObjectType({
   name: "Asset",
   fields: () => ({
     _id: { type: GraphQLID },
     assetName: { type: GraphQLString },
     imgUrl: { type: GraphQLString },
-    createdBy: { type: GraphQLString },
-    // createdBy: {
-    //   type: ArtistType,
-    //   args: { _id: { type: GraphQLString } },
-    //   resolve(parent, args) {
-    //     return getArtistById(args._id)
+    createdBy: {
+      type: ArtistType,
+      async resolve(parent, args) {
+        return await getArtistById(parent.creatorId)
         
-    //   }
-    //  },
+      }
+     },
     createdAt: { type: GraphQLString },
     description: { type: GraphQLString },
     price:{type: GraphQLFloat},
     highestBid: {type: GraphQLFloat},
     tags: {type: new GraphQLList(GraphQLString)},
-    detailsLink: { type: GraphQLString }
+    creatorId: { type: GraphQLString }
   }),
 });
