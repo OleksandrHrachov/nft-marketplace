@@ -35,3 +35,16 @@ export interface ICategory {
   iconUrl: string;
   category: string;
 }
+
+export interface IAsset {
+  _id: string;
+  assetName: string;
+  imgUrl: string;
+  createdBy: ICreator;
+  price: number;
+  highestBid: number;
+  createdAt: string;
+  description: string;
+  detailsLink: string;
+  tags: string[];
+}
