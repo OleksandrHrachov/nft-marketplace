@@ -1,5 +1,6 @@
 import "./Home.scss";
 import { BannerSection } from "./components/BannerSection";
+import { BottomBanerSection } from "./components/BottomBanerSection";
 import { BrowseCategoriesSection } from "./components/BrowseCategoriesSection";
 import { CollectionSection } from "./components/CollectionSection";
 import { DiscoverNftSection } from "./components/DiscoverNftSection";
@@ -13,6 +14,7 @@ export default function Home() {
       <TopCreatorsSection />
       <BrowseCategoriesSection />
       <DiscoverNftSection />
+      <BottomBanerSection />
     </main>
   );
 }

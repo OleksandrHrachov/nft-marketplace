@@ -1,0 +1,25 @@
+.bottom-banner {
+  width: 100%;
+  height: 680px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &__image {
+    &-front {
+      display: block;
+      object-fit: cover;
+      height: 660px;
+      align-self: end;
+    }
+
+    &-back {
+      position: absolute;
+      z-index: -1;
+      top: -140px;
+      filter: blur(4px);
+    }
+  }
+}

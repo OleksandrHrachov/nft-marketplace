@@ -13,6 +13,7 @@ import { AssetType } from "./assetSchema";
 import { getAllAssets, getAssetById, getAssetsByTag } from "../db/asset";
 import { CategoryType } from "./categorySchema"
 import { getAllCategories} from "../db/category"
+import { getBottomBanner } from "../db/bottomBanner";
 
 export const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -66,6 +67,13 @@ export const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(CategoryType),
       async resolve(parent, args) {
         const result = await getAllCategories();
+        return result;
+      },
+    },
+    bottomBanner: {
+      type: new GraphQLList(AssetType),
+      async resolve(parent, args) {
+        const result = await getBottomBanner();
         return result;
       },
     },
