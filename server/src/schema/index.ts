@@ -3,13 +3,14 @@ import {
   GraphQLID,
   GraphQLSchema,
   GraphQLList,
+  GraphQLString
 } from "graphql";
 import { BannerType } from "./bannerSchema";
 import { getBannerAsset } from "../db/bannerAsset";
 import { ArtistType } from "./artistSchema";
 import { getAllArtists, getArtistById } from "../db/artist";
 import { AssetType } from "./assetSchema";
-import { getAllAssets, getAssetById } from "../db/asset";
+import { getAllAssets, getAssetById, getAssetsByTag } from "../db/asset";
 import { CategoryType } from "./categorySchema"
 import { getAllCategories} from "../db/category"
 
@@ -50,6 +51,14 @@ export const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(AssetType),
       async resolve(parent, args) {
         const result = await getAllAssets();
+        return result;
+      },
+    },
+    assetsCollection: {
+      type: new GraphQLList(AssetType),
+      args: { tags: { type: new GraphQLList(GraphQLString) } },
+      async resolve(parent, args) {
+        const result = await getAssetsByTag(args.tags);
         return result;
       },
     },

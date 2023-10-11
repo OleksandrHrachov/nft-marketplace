@@ -17,3 +17,7 @@ export const getAllAssets = () => assetModel.find();
 export const getCreatedBy = (createdByAttistId: string) =>
   assetModel.find({createdBy: createdByAttistId});
 export const getAssetById = (id: string) => assetModel.findById(id);
+
+export const getAssetsByTag = (tags: string[]) => {
+  return  assetModel.find({tags: {$in: [...tags]}});
+}

@@ -1,6 +1,6 @@
 @import "../../utils/mixins.scss";
 
-.discover {
+.collection {
   width: 100%;
   &__header {
     display: flex;
@@ -25,8 +25,8 @@
 
   &__list {
     display: flex;
-    justify-content: space-between;
     gap: 30px;
+    justify-content: space-between;
 
     &-empty-list {
       text-align: center;
