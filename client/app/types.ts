@@ -48,3 +48,10 @@ export interface IAsset {
   detailsLink: string;
   tags: string[];
 }
+
+export interface IHowItWorkCard {
+  _id: string;
+  title: string;
+  imgUrl: string;
+  description: string;
+}
