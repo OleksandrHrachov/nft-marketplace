@@ -74,7 +74,7 @@ export default function BottomBanerSection({
   }, []);
 
   return (
-    <section className="bottom-banner">
+    <section className="bottom-banner container">
       <div className="bottom-banner__image-wrapper">
         <ImageComponent
           imgClass="bottom-banner__image"
@@ -87,7 +87,7 @@ export default function BottomBanerSection({
         />
       </div>
 
-      <div className="container bottom-banner__image-info">
+      <div className="bottom-banner__image-info">
         <Link href={`/creator/${creatorId}`} className="bottom-banner__image-info-creator">
           <ImageComponent
             imgClass="bottom-banner__image-info-creator-avatar"

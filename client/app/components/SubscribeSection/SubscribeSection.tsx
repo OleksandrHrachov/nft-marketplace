@@ -15,8 +15,6 @@ interface IProps {
 export default function SubscribeSection({imageUrl, title, description}: IProps) {
   const [email, setEmail] = useState('');
 
-
-
   return (
     <section className="container subscribe">
       <div className="subscribe__container">

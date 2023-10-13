@@ -21,7 +21,6 @@ html {
 }
 
 body {
-  max-width: 1280px;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -34,6 +33,9 @@ body {
 .container {
   position: relative;
   padding: 80px 115px;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 a {

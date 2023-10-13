@@ -61,3 +61,8 @@ export interface ISudscribe {
   title: string;
   description: string;
 }
+
+export interface ISocialLink {
+  name: string;
+  url: string;
+}
