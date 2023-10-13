@@ -16,6 +16,8 @@ import { getAllCategories} from "../db/category"
 import { getBottomBanner } from "../db/bottomBanner";
 import { HowItWorkCardType } from "./howItWorkSchema";
 import { getAllCards } from "../db/howItWork";
+import { SubscribeType } from "./sudscribeSchema";
+import { getSubscribe } from "../db/subscribe";
 
 export const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -83,6 +85,13 @@ export const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(HowItWorkCardType),
       async resolve(parent, args) {
         const result = await getAllCards();
+        return result;
+      },
+    },
+    subscribe: {
+      type: new GraphQLList(SubscribeType),
+      async resolve(parent, args) {
+        const result = await getSubscribe();
         return result;
       },
     },
