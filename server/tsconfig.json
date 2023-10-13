@@ -3,7 +3,8 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "outDir": "dist",
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "allowJs": true
   },
   "include": ["src/**/*"]
 }
