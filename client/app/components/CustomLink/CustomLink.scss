@@ -28,4 +28,9 @@
   &--outline {
     border: 2px solid var(--purple);
   }
+
+  &--light {
+    background-color: var(--white);
+    color: var(--primary-background);
+  }
 }

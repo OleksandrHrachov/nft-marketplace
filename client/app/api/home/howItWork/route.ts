@@ -26,7 +26,5 @@ export async function GET(req: Request) {
       return { howItWorkCards: [] };
     });
 
-    console.log('CARDS =>', cards);
-
   return NextResponse.json(cards.howItWorkCards);
 }
