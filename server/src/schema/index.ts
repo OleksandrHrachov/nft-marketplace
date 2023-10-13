@@ -18,6 +18,8 @@ import { HowItWorkCardType } from "./howItWorkSchema";
 import { getAllCards } from "../db/howItWork";
 import { SubscribeType } from "./sudscribeSchema";
 import { getSubscribe } from "../db/subscribe";
+import { SocialLinkType } from "./socialLinkSchema";
+import { getAllSocialLinks } from "../db/socialLink";
 
 export const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -95,6 +97,13 @@ export const RootQuery = new GraphQLObjectType({
         return result;
       },
     },
+    socialLinks: {
+      type: new GraphQLList(SocialLinkType),
+      async resolve(parent, args) {
+        const result = await getAllSocialLinks();
+        return result;
+      }
+    }
   },
 });
 

@@ -8,26 +8,6 @@ import {
 import { ArtistType } from './artistSchema';
 import { getArtistById } from "../db/artist";
 
-interface IMyAssetType {
-  name: string;
-  fields: () => ({
-    _id: string;
-    assetName: string;
-    imgUrl: string;
-    createdBy: {
-      type: unknown,
-      args: { [key: string]: string },
-      resolve(parent: unknown, args: unknown): unknown;
-     },
-    createdAt: string;
-    description: string;
-    price: number
-    highestBid: number
-    tags: string[];
-    detailsLink:string;
-  }),
-}
-
 export const AssetType: GraphQLObjectType = new GraphQLObjectType({
   name: "Asset",
   fields: () => ({
