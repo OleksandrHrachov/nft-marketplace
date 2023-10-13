@@ -12,6 +12,8 @@ interface IProps {
   iconWidth?: number;
   iconHeight?: number;
   href?: string;
+  buttonClass?: string;
+  type?: "button" | "submit" | "reset";
 }
 
 export default function Button({
@@ -23,11 +25,13 @@ export default function Button({
   iconWidth = 20,
   iconHeight = 20,
   href,
+  buttonClass = '',
+  type = 'button'
 }: IProps) {
   return href ? (
     <Link
       href={href}
-      className={`button button--${variant}`}
+      className={`button button--${variant} ${buttonClass}`}
       onClick={() => handleClick && handleClick()}
     >
       {iconSrc && (
@@ -43,8 +47,8 @@ export default function Button({
     </Link>
   ) : (
     <button
-      className={`button button--${variant}`}
-      type="button"
+      className={`button button--${variant} ${buttonClass}`}
+      type={type}
       onClick={() => handleClick && handleClick()}
     >
       {iconSrc && (

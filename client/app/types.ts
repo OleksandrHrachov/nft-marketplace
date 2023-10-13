@@ -55,3 +55,9 @@ export interface IHowItWorkCard {
   imgUrl: string;
   description: string;
 }
+
+export interface ISudscribe {
+  imgUrl: string;
+  title: string;
+  description: string;
+}
