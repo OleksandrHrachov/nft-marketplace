@@ -6,8 +6,23 @@ import { CollectionSection } from "./components/CollectionSection";
 import { DiscoverNftSection } from "./components/DiscoverNftSection";
 import { HowItWorkSection } from "./components/HowItWorkSection";
 import { TopCreatorsSection } from "./components/TopCreatorsSection";
+import { IBanner } from "./types";
 
-export default function Home() {
+const getBottomBanner = async (): Promise<IBanner> => {
+  const bottomBanner = await fetch(
+    "http://localhost:3000/api/home/bottomBanner",
+    {
+      method: "GET",
+    }
+  )
+    .then((res) => res.json())
+    .then((data) => data[0]);
+
+  return bottomBanner;
+};
+
+export default async function Home() {
+  const bottomBanner = await getBottomBanner();
   return (
     <main className="main">
       <BannerSection />
@@ -15,7 +30,14 @@ export default function Home() {
       <TopCreatorsSection />
       <BrowseCategoriesSection />
       <DiscoverNftSection />
-      <BottomBanerSection />
+      <BottomBanerSection
+        imgUrl={bottomBanner.imgUrl}
+        avatarUrl={bottomBanner.createdBy.avatarUrl}
+        nickName={bottomBanner.createdBy.nickName}
+        imgId={bottomBanner._id}
+        assetName={bottomBanner.assetName}
+        creatorId={bottomBanner.createdBy._id}
+      />
       <HowItWorkSection />
     </main>
   );

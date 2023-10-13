@@ -51,7 +51,7 @@ export default function CollectionCard({ data }: IProps) {
       </div>
       <div className="collection-card__descr">
         <h5 className="collection-card__descr-title">{data[0].tags[0]}</h5>
-        <div className="collection-card__descr-creator">
+        <Link href={`/creator/${data[0].createdBy._id}`} className="collection-card__descr-creator">
           <ImageComponent
             imgClass="collection-card__descr-creator-avatar"
             src={`${BASE_URL}/${data[0].createdBy.avatarUrl}` || ''}
@@ -64,7 +64,7 @@ export default function CollectionCard({ data }: IProps) {
           <span className="collection-card__descr-creator-name">
             {data[0].createdBy.nickName || ''}
           </span>
-        </div>
+        </Link>
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ export async function GET(req: NextRequest) {
         createdBy {
           avatarUrl
           nickName
+          _id
         }
       }
     }

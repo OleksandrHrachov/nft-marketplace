@@ -8,7 +8,7 @@ export interface IBanner {
   _id: string;
   assetName: string;
   imgUrl: string;
-  createdBy: string;
+  createdBy: ICreator;
   creatorNickName: string;
   creatorAvatarUrl: string;
 }

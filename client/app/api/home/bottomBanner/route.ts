@@ -7,9 +7,16 @@ import { gql } from "@apollo/client";
 export async function GET(req: Request) {
   const query = gql`
     query {
-      bottomBanner{
-    imgUrl
-  }
+      bottomBanner {
+        _id
+        imgUrl
+        assetName
+        createdBy {
+          nickName
+          avatarUrl
+          _id
+        }
+      }
     }
   `;
 
@@ -18,8 +25,8 @@ export async function GET(req: Request) {
       query,
     })
     .then((res) => res.data.bottomBanner)
-    .catch(e => {
-      console.log('ERROR home-banner-route =>', e);
+    .catch((e) => {
+      console.log("ERROR home-banner-route =>", e);
       return {};
     });
 

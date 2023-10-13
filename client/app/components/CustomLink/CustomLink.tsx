@@ -5,7 +5,7 @@ import "./CustomLink.scss";
 
 interface IProps {
   children: React.ReactNode;
-  variant?: "primary" | 'outline';
+  variant?: "primary" | 'outline' | 'light';
   iconSrc?: string;
   iconAlt?: string;
   iconWidth?: number;
