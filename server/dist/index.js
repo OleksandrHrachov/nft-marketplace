@@ -7,12 +7,13 @@ require("dotenv").config();
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const mongoose_1 = __importDefault(require("mongoose"));
+const path_1 = __importDefault(require("path"));
 const express_graphql_1 = require("express-graphql");
 const schema_1 = require("./schema");
 const PORT = process.env.PORT || 5000;
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
-app.use(express_1.default.static("./src/public"));
+app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
 app.use(express_1.default.json());
 app.use("/graphql", (0, express_graphql_1.graphqlHTTP)({
     schema: schema_1.rootSchema,
