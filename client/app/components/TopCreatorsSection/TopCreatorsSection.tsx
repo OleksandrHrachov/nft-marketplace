@@ -5,13 +5,32 @@ import { CreatorCard } from "./CreatorCard";
 import { ICreator } from "@/app/types";
 import { BASE_URL } from "@/app/utils/endpoint";
 
-const getCreators = async (): Promise<ICreator[]> => {
-  const creators = await fetch("http://localhost:3000/api/home/creators", {
-    method: "GET",
-  }).then((res) => res.json());
+import { gql } from "@apollo/client";
+import { getClient } from "@/app/libs/client";
 
-  return creators;
-};
+export async function getCreators(): Promise<ICreator[]> {
+  const query = gql`
+    query {
+      artists {
+        _id
+        nickName
+        avatarUrl
+        totalSales
+      }
+    }
+  `;
+
+  const creators = await getClient()
+    .query<{ artists: ICreator[] }>({
+      query,
+    })
+    .then((res) => res.data)
+    .catch(e => {
+      console.log('ERROR home-creators-route =>', e);
+      return {artists: []}
+    })
+    return creators.artists;
+  };
 
 export default async function TopCreatorsSection() {
   const creators = (await getCreators()).slice(0, 12);

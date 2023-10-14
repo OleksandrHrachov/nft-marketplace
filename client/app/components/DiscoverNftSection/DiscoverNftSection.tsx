@@ -5,12 +5,38 @@ import { DiscoveryCard } from "./DiscoveryCard";
 import { BASE_URL } from "@/app/utils/endpoint";
 import { IAsset } from "@/app/types";
 
-const getAssets = async (): Promise<IAsset[]> => {
-  const categories = await fetch("http://localhost:3000/api/home/discovery", {
-    method: "GET",
-  }).then((res) => res.json());
+import { gql } from "@apollo/client";
+import { getClient } from "@/app/libs/client";
 
-  return categories;
+export async function getAssets(): Promise<IAsset[]> {
+  const query = gql`
+    query {
+      assets{
+    _id
+    imgUrl
+    assetName
+    price
+    highestBid
+    createdBy{
+      nickName
+      avatarUrl
+      _id
+    }
+  }
+    }
+  `;
+
+  const assets = await getClient()
+    .query<{ assets: IAsset[] }>({
+      query,
+    })
+    .then((res) => res.data)
+    .catch(e => {
+      console.log('ERROR home-discovery-route =>', e);
+      return {assets: []}
+    })
+
+    return assets.assets;
 };
 
 export default async function DiscoverNftSection() {

@@ -1,31 +1,77 @@
-"use client";
-
-import React, { useState } from "react";
 import Link from "next/link";
 import { Logo } from "../Logo";
 import "./Footer.scss";
 import { PageLinks } from "@/app/utils/endpoint";
 import { SubscribeInput } from "../SubscribeInput";
-import youtubeIcon from '../../../public/youtubeLogo.svg';
-import twitterIcon from '../../../public/twitterLogo.svg';
-import instagramIcon from '../../../public/instagramLogo.svg';
-import { ISocialLink } from "@/app/types";
+import youtubeIcon from "../../../public/youtubeLogo.svg";
+import twitterIcon from "../../../public/twitterLogo.svg";
+import instagramIcon from "../../../public/instagramLogo.svg";
+import { ISocialLink, ISudscribe } from "@/app/types";
 import Image from "next/image";
 
-interface IProps {
-  subscrTitle: string;
-  subscrDescr: string;
-  links: ISocialLink[];
-}
+import { gql } from "@apollo/client";
+import { getClient } from "@/app/libs/client";
 
-const socialLinks: {[key: string]: any} = {
+const socialLinks: { [key: string]: any } = {
   youtube: youtubeIcon as any,
   twitter: twitterIcon as any,
-  instagram: instagramIcon as any
+  instagram: instagramIcon as any,
+};
+
+export async function getSubscribe(): Promise<ISudscribe> {
+  const query = gql`
+    query {
+      subscribe {
+        imgUrl
+        title
+        description
+      }
+    }
+  `;
+
+  const subscribe = await getClient()
+    .query<{ subscribe: ISudscribe[] }>({
+      query,
+    })
+    .then((res) => res.data.subscribe[0])
+    .catch((e) => {
+      console.log("ERROR home-subscribe-route =>", e);
+      return {
+        imgUrl: "",
+        title: "",
+        description: "",
+      };
+    });
+
+  return subscribe;
 }
 
-export default function Footer({subscrTitle, subscrDescr, links}: IProps) {
-  const [email, setEmail] = useState("");
+export async function getSocialLinks(): Promise<ISocialLink[]> {
+  const query = gql`
+    query {
+      socialLinks {
+        name
+        url
+      }
+    }
+  `;
+
+  const socialLinks = await getClient()
+    .query<{ socialLinks: ISocialLink[] }>({
+      query,
+    })
+    .then((res) => res.data.socialLinks)
+    .catch((e) => {
+      console.log("ERROR footer-route =>", e);
+      return [];
+    });
+
+  return socialLinks;
+}
+
+export default async function Footer() {
+  const subscribe = await getSubscribe();
+  const socialLinksResponse = await getSocialLinks();
 
   return (
     <footer className="footer">
@@ -44,18 +90,24 @@ export default function Footer({subscrTitle, subscrDescr, links}: IProps) {
                   Join our community
                 </p>
                 <div className="footer__container-top-info-social-links-icons">
-                  {links.length && links.map(link => {
-                    return (
-                      <Link className="footer__container-top-info-social-links-icon" key={link.url} href={link.url} target="_blank">
-                       <Image
-                       src={socialLinks[link.name]}
-                       alt={link.name}
-                       width={32}
-                       height={32} 
-                       />
-                      </Link>
-                    );
-                  })}
+                  {socialLinksResponse.length &&
+                    socialLinksResponse.map((link) => {
+                      return (
+                        <Link
+                          className="footer__container-top-info-social-links-icon"
+                          key={link.url}
+                          href={link.url}
+                          target="_blank"
+                        >
+                          <Image
+                            src={socialLinks[link.name]}
+                            alt={link.name}
+                            width={32}
+                            height={32}
+                          />
+                        </Link>
+                      );
+                    })}
                 </div>
               </div>
             </div>
@@ -84,15 +136,19 @@ export default function Footer({subscrTitle, subscrDescr, links}: IProps) {
             </div>
 
             <div className="footer__container-top-subscribe">
-              <h3 className="footer__container-top-subscribe-title">{subscrTitle}</h3>
+              <h3 className="footer__container-top-subscribe-title">
+                {subscribe.title}
+              </h3>
               <p className="footer__container-top-subscribe-description">
-                {subscrDescr}
+                {subscribe.description}
               </p>
-              <SubscribeInput value={email} setValue={setEmail} />
+              <SubscribeInput buttonClass="my-button" />
             </div>
           </div>
         </div>
-          <p className="footer__container-bottom">&#169; NFT Market. Use this template freely.</p>
+        <p className="footer__container-bottom">
+          &#169; NFT Market. Use this template freely.
+        </p>
       </section>
     </footer>
   );

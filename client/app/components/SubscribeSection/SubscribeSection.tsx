@@ -1,28 +1,51 @@
-'use client';
-
-import React, {useState} from "react";
 import { BASE_URL } from "@/app/utils/endpoint";
 import { ImageComponent } from "../ImageComponent";
 import "./SubscribeSection.scss";
 import { SubscribeInput } from "../SubscribeInput";
+import { ISudscribe } from "@/app/types";
 
-interface IProps {
-  imageUrl: string;
-  title: string;
-  description: string;
+import { gql } from "@apollo/client";
+import { getClient } from "@/app/libs/client";
+
+export async function getSubscribe(): Promise<ISudscribe> {
+  const query = gql`
+    query {
+      subscribe {
+        imgUrl
+        title
+        description
+      }
+    }
+  `;
+
+  const subscribe = await getClient()
+    .query<{ subscribe: ISudscribe[] }>({
+      query,
+    })
+    .then((res) => res.data.subscribe[0])
+    .catch((e) => {
+      console.log("ERROR home-subscribe-route =>", e);
+      return {
+        imgUrl: "",
+        title: "",
+        description: "",
+      };
+    });
+
+  return subscribe;
 }
 
-export default function SubscribeSection({imageUrl, title, description}: IProps) {
-  const [email, setEmail] = useState('');
+export default async function SubscribeSection() {
+  const subscribe = await getSubscribe();
 
   return (
     <section className="container subscribe">
       <div className="subscribe__container">
         <div className="subscribe__container-image-wrapper">
-        <ImageComponent
+          <ImageComponent
             imgClass="subscribe__container-image"
-            src={`${BASE_URL}/${imageUrl}` || ""}
-            alt={'image'}
+            src={`${BASE_URL}/${subscribe.imgUrl}` || ""}
+            alt={"image"}
             width={425}
             height={310}
             tableWidth={300}
@@ -30,9 +53,13 @@ export default function SubscribeSection({imageUrl, title, description}: IProps)
           />
         </div>
         <div className="subscribe__container-content">
-          <h3 className="subscribe__container-content-title">{title}</h3>
-          <p className="subscribe__container-content-description">{description}</p>
-          <SubscribeInput value={email} setValue={setEmail} />
+          <h3 className="subscribe__container-content-title">
+            {subscribe.title}
+          </h3>
+          <p className="subscribe__container-content-description">
+            {subscribe.description}
+          </p>
+          <SubscribeInput />
         </div>
       </div>
     </section>

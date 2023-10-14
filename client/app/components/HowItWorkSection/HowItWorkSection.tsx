@@ -3,13 +3,33 @@ import "./HowItWorkSection.scss";
 import { HowItWorkCard } from "./HowItWorkCard";
 import { BASE_URL } from "@/app/utils/endpoint";
 
-const getCards = async (): Promise<IHowItWorkCard[]> => {
-  const collections = await fetch("http://localhost:3000/api/home/howItWork", {
-    method: "GET",
-  }).then((res) => res.json());
+import { gql } from "@apollo/client";
+import { getClient } from "@/app/libs/client";
 
-  return collections;
-};
+export async function getCards(): Promise<IHowItWorkCard[]> {
+  const query = gql`
+    query {
+      howItWorkCards {
+        _id
+        title
+        imgUrl
+        description
+      }
+    }
+  `;
+
+  const cards = await getClient()
+    .query<{ howItWorkCards: IHowItWorkCard[] }>({
+      query,
+    })
+    .then((res) => res.data)
+    .catch((e) => {
+      console.log("ERROR home-creators-route =>", e);
+      return { howItWorkCards: [] };
+    });
+
+  return cards.howItWorkCards;
+}
 
 export default async function HowItWorkSection() {
   const cards = await getCards();

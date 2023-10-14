@@ -1,22 +1,23 @@
-'use client';
+"use client";
 
+import React, { useState } from "react";
 import { Button } from "../Button";
 import "./SubscribeInput.scss";
 import mailIcon from "../../../public/mailIcon.svg";
 
 interface IProps {
-  value: string;
-  setValue: (v: string) => void;
   buttonClass?: string;
 }
 
-let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
 
-export default function SubscribeInput({ value, setValue, buttonClass }: IProps) {
-  const onSubmit =(e: React.FormEvent) => {
+export default function SubscribeInput({ buttonClass }: IProps) {
+  const [value, setValue] = useState("");
+  
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (regex.test(value)) {
-      setValue('');
+      setValue("");
     }
   };
 

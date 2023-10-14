@@ -6,13 +6,35 @@ import { CustomLink } from "../CustomLink";
 import { ImageComponent } from "../ImageComponent";
 import Link from "next/link";
 
-const getBanner = async (): Promise<IBanner> => {
-  const banner = await fetch("http://localhost:3000/api/home/banner", {
-    method: "GET",
-  }).then((res) => res.json());
+import { gql } from "@apollo/client";
+import { getClient } from "@/app/libs/client";
 
-  return banner;
-};
+export async function getBanner(): Promise<IBanner | null> {
+  const query = gql`
+    query {
+      banner {
+        _id
+        assetName
+        createdBy
+        imgUrl
+        creatorNickName
+        creatorAvatarUrl
+      }
+    }
+  `;
+
+  const banner = await getClient()
+    .query<{ banner: IBanner }>({
+      query,
+    })
+    .then((res) => res.data.banner)
+    .catch(e => {
+      console.log('ERROR home-banner-route =>', e);
+      return null
+    });
+
+  return banner
+}
 
 export default async function BannerSection() {
   const bannerData = await getBanner();
@@ -53,7 +75,8 @@ export default async function BannerSection() {
           </div>
         </div>
       </div>
-      <Link href={`/nft/${bannerData._id}`} className="banner__image">
+      {bannerData ? (
+        <Link href={`/nft/${bannerData._id}`} className="banner__image">
         <ImageComponent
           imgClass="banner__image-banner"
           src={`${BASE_URL}/${bannerData.imgUrl}` || ""}
@@ -84,6 +107,7 @@ export default async function BannerSection() {
           </div>
         </div>
       </Link>
+      ) : (null)}
     </section>
   );
 }

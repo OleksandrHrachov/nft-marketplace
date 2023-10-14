@@ -2,13 +2,31 @@ import { ICategory } from "@/app/types";
 import "./BrowseCategoriesSection.scss";
 import { CategoryCard } from "./CategoryCard";
 import { BASE_URL } from "@/app/utils/endpoint";
+import { gql } from "@apollo/client";
+import { getClient } from "@/app/libs/client";
 
-const getCategories = async (): Promise<ICategory[]> => {
-  const categories = await fetch("http://localhost:3000/api/home/categories", {
-    method: "GET",
-  }).then((res) => res.json());
+export async function getCategories(): Promise<ICategory[] | []> {
+  const query = gql`
+    query {
+      categories {
+        category
+        imageUrl
+        iconUrl
+      }
+    }
+  `;
 
-  return categories;
+  const categories = await getClient()
+    .query<{ categories: ICategory[] }>({
+      query,
+    })
+    .then((res) => res.data)
+    .catch((e) => {
+      console.log("ERROR home-categories-route =>", e);
+      return { categories: [] };
+    });
+
+  return categories.categories
 };
 
 export default async function BrowseCategoriesSection() {
