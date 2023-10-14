@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import { graphqlHTTP } from "express-graphql";
+import { routers } from "./router";
 import { rootSchema }from './schema';
 
 const PORT = process.env.PORT || 5000;
@@ -19,6 +20,8 @@ app.use(
     graphiql: true,
   })
 );
+
+// app.use("/nft", routers);
 
 const start = async () => {
   try {
