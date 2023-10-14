@@ -71,7 +71,7 @@ export default function BottomBanerSection({
     return () => {
       clearInterval(timer);
     };
-  }, []);
+  });
 
   return (
     <section className="bottom-banner container">
