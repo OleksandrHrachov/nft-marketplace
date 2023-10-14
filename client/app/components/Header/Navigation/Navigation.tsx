@@ -11,7 +11,7 @@ export default function Navigation() {
         <Link href={PageLinks.MARKETPLACE} className="nav__link">
           Marketplace
         </Link>
-        <Link href={PageLinks.RUNKINGS} className="nav__link">
+        <Link href={PageLinks.RANKINGS} className="nav__link">
           Rankings
         </Link>
         <Link href={PageLinks.WALLET} className="nav__link">

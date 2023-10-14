@@ -121,7 +121,7 @@ export default async function Footer() {
                   Marketplace
                 </Link>
                 <Link
-                  href={PageLinks.RUNKINGS}
+                  href={PageLinks.RANKINGS}
                   className="footer__container-top-explore-link"
                 >
                   Rankings

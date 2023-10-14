@@ -2,6 +2,6 @@ export const BASE_URL = '';
 
 export enum PageLinks {
   MARKETPLACE = '/marketplace',
-  RUNKINGS = '/runkings',
+  RANKINGS = '/rankings',
   WALLET = '/wallet'
 }
