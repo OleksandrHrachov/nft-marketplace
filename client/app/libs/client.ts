@@ -1,7 +1,7 @@
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
 
-const GRAPHQL_ENDPOINT = 'http://localhost:5000/graphql';
+const GRAPHQL_ENDPOINT = process.env.SERVER_ENDPOINT || 'http://localhost:5000/graphql';
 
 export const { getClient } = registerApolloClient(() => {
   return new ApolloClient({
