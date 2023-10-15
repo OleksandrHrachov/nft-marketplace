@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAssetsByTag = exports.getAssetById = exports.getCreatedBy = exports.getAllAssets = exports.assetModel = void 0;
+exports.getGroupAssets = exports.getAssetsByTag = exports.getAssetById = exports.getCreatedBy = exports.getAllAssets = exports.assetModel = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const AssetSchema = new mongoose_1.default.Schema({
     assetName: { type: String, required: true },
@@ -26,3 +26,7 @@ const getAssetsByTag = (tags) => {
     return exports.assetModel.find({ tags: { $in: [...tags] } });
 };
 exports.getAssetsByTag = getAssetsByTag;
+const getGroupAssets = (ids) => {
+    return exports.assetModel.find({ _id: { $in: [...ids] } });
+};
+exports.getGroupAssets = getGroupAssets;
