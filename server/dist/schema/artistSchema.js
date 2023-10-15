@@ -23,10 +23,16 @@ exports.ArtistType = new graphql_1.GraphQLObjectType({
         followers: { type: graphql_1.GraphQLInt },
         bio: { type: graphql_1.GraphQLString },
         socialLinks: { type: SocialLinksType },
-        assets: {
+        assets: { type: new graphql_1.GraphQLList(graphql_1.GraphQLString) },
+        getAssets: {
             type: new graphql_1.GraphQLList(assetSchema_1.AssetType),
-            resolve(parent, args) {
-                return (0, asset_1.getCreatedBy)(parent._id);
+            async resolve(parent, args) {
+                if (parent.assets[0] === "" || !parent.assets.length) {
+                    return [];
+                }
+                else {
+                    return await (0, asset_1.getGroupAssets)(parent.assets);
+                }
             },
         },
         totalSales: { type: graphql_1.GraphQLFloat },
