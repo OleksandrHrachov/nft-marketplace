@@ -18,7 +18,6 @@ export const AssetType: GraphQLObjectType = new GraphQLObjectType({
       type: ArtistType,
       async resolve(parent, args) {
         return await getArtistById(parent.creatorId)
-        
       }
      },
     createdAt: { type: GraphQLString },

@@ -21,3 +21,7 @@ export const getAssetById = (id: string) => assetModel.findById(id);
 export const getAssetsByTag = (tags: string[]) => {
   return  assetModel.find({tags: {$in: [...tags]}});
 }
+
+export const getGroupAssets = (ids: string[]) => {
+  return  assetModel.find({_id: {$in: [...ids]}});
+};

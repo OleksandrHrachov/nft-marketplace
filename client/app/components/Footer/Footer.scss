@@ -1,5 +1,8 @@
+@import '../../utils/mixins.scss';
+
 .footer {
   background-color: var(--gray3B);
+  border-top: 2px solid var(--primary-background);
 
   &__container {
     position: relative;
@@ -39,6 +42,9 @@
 
           &-icon {
             margin-right: 10px;
+
+            @include social-link-hover;
+
             &:last-child {
               margin-right: 0;
             }

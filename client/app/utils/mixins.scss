@@ -138,3 +138,16 @@
     border: 3px solid var(--primary-background);
   }
 }
+
+@mixin social-link-hover {
+  img {
+    border-radius: 6px;
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    img {
+      background-color: var(--purple);
+    }
+  }
+}
