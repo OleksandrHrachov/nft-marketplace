@@ -8,7 +8,7 @@ import {
 } from "graphql";
 
 import { AssetType } from "./assetSchema";
-import { getCreatedBy } from "../db/asset";
+import { getCreatedBy, getGroupAssets } from "../db/asset";
 
 const SocialLinksType = new GraphQLObjectType({
   name: "SocialLinks",
@@ -30,10 +30,16 @@ export const ArtistType: GraphQLObjectType = new GraphQLObjectType({
     followers: { type: GraphQLInt },
     bio: { type: GraphQLString },
     socialLinks: { type: SocialLinksType },
-    assets: {
+    assets: { type: new GraphQLList(GraphQLString) },
+
+    getAssets: {
       type: new GraphQLList(AssetType),
-      resolve(parent, args) {
-        return getCreatedBy(parent._id);
+      async resolve(parent, args) {
+        if (parent.assets[0] === "" || !parent.assets.length) {
+          return [];
+        } else {
+          return await getGroupAssets(parent.assets);
+        }
       },
     },
     totalSales: { type: GraphQLFloat },

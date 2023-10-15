@@ -5,7 +5,7 @@ import Link from "next/link";
 
 interface IProps {
   children: React.ReactNode;
-  variant?: "primary";
+  variant?: "primary" | 'outline';
   handleClick?: () => void;
   iconSrc?: string;
   iconAlt?: string;

@@ -26,7 +26,8 @@ export interface ICreator {
     twitter: string;
     instagram: string;
   };
-  assets: unknown[];
+  assets: string[];
+  getAssets: IAsset[]
   totalSales: number;
 }
 

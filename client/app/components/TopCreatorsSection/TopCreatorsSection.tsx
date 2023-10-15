@@ -25,12 +25,12 @@ export async function getCreators(): Promise<ICreator[]> {
       query,
     })
     .then((res) => res.data)
-    .catch(e => {
-      console.log('ERROR home-creators-route =>', e);
-      return {artists: []}
-    })
-    return creators.artists;
-  };
+    .catch((e) => {
+      console.log("ERROR home-creators-route =>", e);
+      return { artists: [] };
+    });
+  return creators.artists;
+}
 
 export default async function TopCreatorsSection() {
   const creators = (await getCreators()).slice(0, 12);
