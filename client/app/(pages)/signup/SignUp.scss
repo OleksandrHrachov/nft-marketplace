@@ -1,6 +1,12 @@
 .sign-up {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+
+  &__title {
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
 }
