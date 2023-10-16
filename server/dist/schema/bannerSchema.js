@@ -11,5 +11,6 @@ exports.BannerType = new graphql_1.GraphQLObjectType({
         createdBy: { type: graphql_1.GraphQLString },
         creatorNickName: { type: graphql_1.GraphQLString },
         creatorAvatarUrl: { type: graphql_1.GraphQLString },
+        assetId: { type: graphql_1.GraphQLString },
     }),
 });

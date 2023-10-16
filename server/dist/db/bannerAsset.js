@@ -11,6 +11,7 @@ const BannerSchema = new mongoose_1.default.Schema({
     createdBy: { type: String, required: true },
     creatorNickName: { type: String },
     creatorAvatarUrl: { type: String },
+    assetId: { type: String }
 });
 exports.bannerModel = mongoose_1.default.model("Banner", BannerSchema);
 const getBannerAsset = () => exports.bannerModel.find();

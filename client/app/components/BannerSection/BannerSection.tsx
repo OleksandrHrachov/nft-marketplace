@@ -1,7 +1,7 @@
 import "./BannerSection.scss";
 import rocketIcon from "../../../public/rocketIcon.svg";
 import { IBanner } from "../../types";
-import { BASE_URL } from '../../utils/endpoint';
+import { BASE_URL, PageLinks } from '../../utils/endpoint';
 import { CustomLink } from "../CustomLink";
 import { ImageComponent } from "../ImageComponent";
 import Link from "next/link";
@@ -19,6 +19,7 @@ export async function getBanner(): Promise<IBanner | null> {
         imgUrl
         creatorNickName
         creatorAvatarUrl
+        assetId
       }
     }
   `;
@@ -76,7 +77,7 @@ export default async function BannerSection() {
         </div>
       </div>
       {bannerData ? (
-        <Link href={`/nft/${bannerData._id}`} className="banner__image">
+        <Link href={`${PageLinks.NFT}/${bannerData.assetId}`} className="banner__image">
         <ImageComponent
           imgClass="banner__image-banner"
           src={`${BASE_URL}/${bannerData.imgUrl}` || ""}

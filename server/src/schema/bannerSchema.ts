@@ -9,5 +9,6 @@ export const BannerType = new GraphQLObjectType({
     createdBy: { type: GraphQLString },
     creatorNickName: { type: GraphQLString },
     creatorAvatarUrl: { type: GraphQLString },
+    assetId: { type: GraphQLString },
   }),
 });

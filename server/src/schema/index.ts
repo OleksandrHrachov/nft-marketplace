@@ -20,6 +20,7 @@ import { SubscribeType } from "./sudscribeSchema";
 import { getSubscribe } from "../db/subscribe";
 import { SocialLinkType } from "./socialLinkSchema";
 import { getAllSocialLinks } from "../db/socialLink";
+import { BottomBannerType } from "./bottomBannerSchema";
 
 export const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -77,7 +78,7 @@ export const RootQuery = new GraphQLObjectType({
       },
     },
     bottomBanner: {
-      type: new GraphQLList(AssetType),
+      type: new GraphQLList(BottomBannerType),
       async resolve(parent, args) {
         const result = await getBottomBanner();
         return result;
