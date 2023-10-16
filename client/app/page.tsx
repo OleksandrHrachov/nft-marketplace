@@ -19,6 +19,7 @@ export async function getBottomBanner(): Promise<IBanner[] | []> {
         _id
         imgUrl
         assetName
+        assetId
         createdBy {
           nickName
           avatarUrl
@@ -51,7 +52,7 @@ export default async function Home() {
       <TopCreatorsSection />
       <BrowseCategoriesSection />
       <DiscoverNftSection />
-      {bottomBanner.length && (
+      {bottomBanner.length > 0 && (
         <BottomBanerSection
         imgUrl={bottomBanner[0].imgUrl}
         avatarUrl={bottomBanner[0].createdBy.avatarUrl}
@@ -59,6 +60,7 @@ export default async function Home() {
         imgId={bottomBanner[0]._id}
         assetName={bottomBanner[0].assetName}
         creatorId={bottomBanner[0].createdBy._id}
+        linkId={bottomBanner[0].assetId}
       />
       )}
       

@@ -6,6 +6,7 @@ const BannerSchema = new mongoose.Schema({
   createdBy: { type: String, required: true },
   creatorNickName: { type: String },
   creatorAvatarUrl: { type: String },
+  assetId: { type: String }
 });
 
 export const bannerModel = mongoose.model("Banner", BannerSchema);

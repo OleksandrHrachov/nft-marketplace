@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import "./BottomBanerSection.scss";
 import { ImageComponent } from "../ImageComponent";
-import { BASE_URL } from "@/app/utils/endpoint";
+import { BASE_URL, PageLinks } from "@/app/utils/endpoint";
 import { Breakpoints } from "@/app/types";
 import { CustomLink } from "../CustomLink";
 import eyeIcon from "../../../public/eyeIconPurple.svg";
@@ -15,6 +15,7 @@ interface IProps {
   imgId: string;
   assetName: string;
   creatorId: string;
+  linkId: string;
 }
 
 const monthArr = [
@@ -38,7 +39,8 @@ export default function BottomBanerSection({
   nickName,
   imgId,
   assetName,
-  creatorId
+  creatorId,
+  linkId
 }: IProps) {
   const [hours, setHours] = useState("0");
   const [minutes, setMinutes] = useState("0");
@@ -129,7 +131,7 @@ export default function BottomBanerSection({
         <div className="bottom-banner__image-info-button">
           <CustomLink
             iconClassName="discover__header-button-icon"
-            href={`nft/${imgId}`}
+            href={`${PageLinks.NFT}/${linkId}`}
             variant="light"
             iconSrc={eyeIcon}
             iconAlt="rocket"

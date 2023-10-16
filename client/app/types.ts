@@ -11,6 +11,7 @@ export interface IBanner {
   createdBy: ICreator;
   creatorNickName: string;
   creatorAvatarUrl: string;
+  assetId: string;
 }
 
 export interface ICreator {

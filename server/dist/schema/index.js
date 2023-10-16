@@ -17,6 +17,7 @@ const sudscribeSchema_1 = require("./sudscribeSchema");
 const subscribe_1 = require("../db/subscribe");
 const socialLinkSchema_1 = require("./socialLinkSchema");
 const socialLink_1 = require("../db/socialLink");
+const bottomBannerSchema_1 = require("./bottomBannerSchema");
 exports.RootQuery = new graphql_1.GraphQLObjectType({
     name: "RootQueryType",
     fields: {
@@ -73,7 +74,7 @@ exports.RootQuery = new graphql_1.GraphQLObjectType({
             },
         },
         bottomBanner: {
-            type: new graphql_1.GraphQLList(assetSchema_1.AssetType),
+            type: new graphql_1.GraphQLList(bottomBannerSchema_1.BottomBannerType),
             async resolve(parent, args) {
                 const result = await (0, bottomBanner_1.getBottomBanner)();
                 return result;

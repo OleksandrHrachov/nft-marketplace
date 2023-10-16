@@ -1,9 +1,9 @@
-import { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLList } from "graphql";
+import { GraphQLObjectType, GraphQLID, GraphQLString } from "graphql";
 import { ArtistType } from "./artistSchema";
 import { getArtistById } from "../db/artist";
 
-export const BannerType = new GraphQLObjectType({
-  name: "Banner",
+export const BottomBannerType = new GraphQLObjectType({
+  name: "BottomBannerType",
   fields: () => ({
     imgUrl: { type: GraphQLString },
     _id: { type: GraphQLID },
@@ -16,5 +16,6 @@ export const BannerType = new GraphQLObjectType({
      },
     creatorId: { type: GraphQLString },
     assetName: { type: GraphQLString },
+    assetId: { type: GraphQLString }
   }),
 });

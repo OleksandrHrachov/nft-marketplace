@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BannerType = void 0;
+exports.BottomBannerType = void 0;
 const graphql_1 = require("graphql");
 const artistSchema_1 = require("./artistSchema");
 const artist_1 = require("../db/artist");
-exports.BannerType = new graphql_1.GraphQLObjectType({
-    name: "Banner",
+exports.BottomBannerType = new graphql_1.GraphQLObjectType({
+    name: "BottomBannerType",
     fields: () => ({
         imgUrl: { type: graphql_1.GraphQLString },
         _id: { type: graphql_1.GraphQLID },
@@ -17,5 +17,6 @@ exports.BannerType = new graphql_1.GraphQLObjectType({
         },
         creatorId: { type: graphql_1.GraphQLString },
         assetName: { type: graphql_1.GraphQLString },
+        assetId: { type: graphql_1.GraphQLString }
     }),
 });
