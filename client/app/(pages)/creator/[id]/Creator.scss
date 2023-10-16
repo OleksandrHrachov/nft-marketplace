@@ -142,8 +142,16 @@
       grid-template-columns: repeat(auto-fill, 330px);
       justify-content: center;
       justify-items: center;
-      column-gap: 30px;
+      column-gap: 20px;
       row-gap: 30px;
+
+      max-height: 780px;
+      min-height: 240px;
+      overflow: hidden;
+      overflow-y: scroll;
+      overflow: overlay;
+
+      @include scroll-bar;
     }
 
     &-empty-list {
