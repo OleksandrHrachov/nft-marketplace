@@ -86,7 +86,7 @@ export default async function DiscoverNftSection() {
         </div>
       ) : (
         <div className="discover__list-empty-list">
-          Sorry, there was some error, so the list of NFTs is not available.
+          Sorry, the list of NFTs is not available.
         </div>
       )}
     </section>

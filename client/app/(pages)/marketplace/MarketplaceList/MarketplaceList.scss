@@ -1,0 +1,30 @@
+@import "../../../utils/mixins.scss";
+
+.marketplace {
+  &__list {
+    position: relative;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, 330px);
+    justify-content: center;
+    justify-items: center;
+    column-gap: 20px;
+    row-gap: 30px;
+
+    max-height: 780px;
+    min-height: 240px;
+    overflow: hidden;
+    overflow-y: scroll;
+    overflow: overlay;
+
+    @include scroll-bar;
+
+    &-empty-list {
+      text-align: center;
+      font-weight: 600;
+      font-size: 22px;
+      text-transform: capitalize;
+      line-height: 30px;
+    }
+  }
+}

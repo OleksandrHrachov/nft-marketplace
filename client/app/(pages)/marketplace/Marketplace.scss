@@ -1,6 +1,25 @@
 .marketplace {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   flex-grow: 1;
+
+  &__header {
+
+    &-title {
+      font-weight: 600;
+      font-size: 51px;
+      line-height: 56px;
+    }
+
+    &-sub-title {
+      font-size: 22px;
+      line-height: 36px;
+    }
+  }
+
+  &__nft-list {
+    background-color: var(--gray3B);
+    display: flex;
+    flex-grow: 1;
+  }
 }
