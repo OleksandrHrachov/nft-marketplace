@@ -7,6 +7,10 @@
     justify-content: space-between;
     margin-bottom: 60px;
 
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+
     &-title {
       @include section-title;
       margin-bottom: 10px;
@@ -16,6 +20,15 @@
       font-size: 22px;
       line-height: 36px;
       text-transform: capitalize;
+
+      @include onDesktopLarge {
+        font-size: 18px;
+        line-height: 22px;
+      }
+
+      @include onTablet {
+        font-size: 16px;
+      }
     }
   }
 
@@ -23,6 +36,11 @@
     display: flex;
     justify-content: space-between;
     gap: 30px;
+
+    @include onMobile {
+      flex-direction: column;
+      align-items: center;
+    }
 
     &-empty-list {
       text-align: center;

@@ -26,8 +26,10 @@ export default function HowItWorkCard({
         mobileWidth={100}
       />
 
-      <h6 className="work-card__title">{title}</h6>
-      <p className="work-card__description">{description}</p>
+      <div className="work-card__text">
+        <h6 className="work-card__title">{title}</h6>
+        <p className="work-card__description">{description}</p>
+      </div>
     </div>
   );
 }
