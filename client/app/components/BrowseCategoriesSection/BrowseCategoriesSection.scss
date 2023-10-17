@@ -1,9 +1,13 @@
-@import '../../utils/mixins.scss';
+@import "../../utils/mixins.scss";
 
 .categories {
   &__title {
     @include section-title;
     margin-bottom: 60px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
   }
 
   &__list {
@@ -14,6 +18,16 @@
     justify-items: center;
     column-gap: 30px;
     row-gap: 30px;
+
+    @include onTablet {
+      grid-template-columns: repeat(auto-fill, 150px);
+      column-gap: 15px;
+      row-gap: 15px;
+    }
+
+    @include onMobile {
+      grid-template-columns: repeat(auto-fill, 140px);
+    }
 
     &-empty-list {
       text-align: center;
