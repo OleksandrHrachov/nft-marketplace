@@ -6,12 +6,14 @@ import "./SubscribeInput.scss";
 import mailIcon from "../../../public/mailIcon.svg";
 
 interface IProps {
+  formClass?: string;
   buttonClass?: string;
+  inputClass?: string;
 }
 
 let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
 
-export default function SubscribeInput({ buttonClass }: IProps) {
+export default function SubscribeInput({ buttonClass, inputClass, formClass }: IProps) {
   const [value, setValue] = useState("");
   
   const onSubmit = (e: React.FormEvent) => {
@@ -22,11 +24,11 @@ export default function SubscribeInput({ buttonClass }: IProps) {
   };
 
   return (
-    <form className="subscribe-input" onSubmit={onSubmit}>
+    <form className={`subscribe-input ${formClass}`} onSubmit={onSubmit}>
       <input
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className="subscribe-input__field"
+        className={`subscribe-input__field ${inputClass}`}
         type="email"
         required
         placeholder="Enter your email here"
