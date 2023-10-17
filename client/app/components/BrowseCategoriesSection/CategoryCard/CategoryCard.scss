@@ -1,3 +1,5 @@
+@import "../../../utils/mixins.scss";
+
 .category-card {
   display: flex;
   flex-direction: column;
@@ -5,6 +7,14 @@
   border-radius: 20px;
   overflow: hidden;
   height: fit-content;
+
+  @include onTablet {
+    width: 150px;
+  }
+
+  @include onMobile {
+    width: 140px;
+  }
 
   &:hover {
     .category-card__image {
@@ -43,11 +53,20 @@
     padding: 20px 30px;
     background-color: var(--gray3B);
 
+    @include onTablet {
+      padding: 20px;
+    }
+
     &-title {
       font-weight: 600;
       font-size: 22px;
       line-height: 30px;
       text-transform: capitalize;
+
+      @include onTablet {
+        font-size: 16px;
+        line-height: 22px;
+      }
     }
   }
 }

@@ -1,13 +1,68 @@
-@import '../../../utils/mixins.scss';
+@import "../../../utils/mixins.scss";
 
 .nav {
   display: flex;
   gap: 10px;
   align-items: center;
+  
+  &-burger {
+    display: none;
+    @include onTablet {
+      background-color: transparent;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      flex-direction: column;
+      border: none;
+      justify-content: space-between;
+      cursor: pointer;
+      padding: 5px;
+
+      &_1,
+      &_3 {
+        width: 70%;
+        height: 1px;
+        border: 1px solid var(--white);
+        transition: all 0.5s;
+
+        &--open {
+          width: 100%;
+        }
+      }
+
+      &_2 {
+        width: 100%;
+        height: 1px;
+        border: 1px solid var(--white);
+      }
+    }
+  }
 
   &__menu {
     display: flex;
+    align-items: center;
     gap: 10px;
+
+    @include onTablet {
+      transform: translateX(110%);
+      position: absolute;
+      z-index: 10;
+      flex-direction: column;
+      top: 50px;
+      height: calc(100vh - var(--header-height-tablet));
+      width: 100%;
+      right: 0;
+      padding: 30px;
+      transition: all 0.5s;
+      background-color: var(--gray3B-09);
+
+      &--open {
+        transform: translateX(0%);
+        transition: all 0.5s;
+      }
+
+
+    }
   }
 
   &__link {
@@ -16,5 +71,15 @@
     font-weight: 600;
 
     @include link-underline;
+
+    &-btn-wrapper {
+      @include onTablet {
+        width: 100%;
+        .link {
+          width: 100%;
+        }
+      }
+    }
+
   }
 }

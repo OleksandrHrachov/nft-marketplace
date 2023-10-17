@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button } from "../Button";
+import { Button } from "../../Button";
 import "./SubscribeInput.scss";
-import mailIcon from "../../../public/mailIcon.svg";
+import mailIcon from "../../../../public/mailIcon.svg";
 
 interface IProps {
   formClass?: string;
@@ -24,18 +24,18 @@ export default function SubscribeInput({ buttonClass, inputClass, formClass }: I
   };
 
   return (
-    <form className={`subscribe-input ${formClass}`} onSubmit={onSubmit}>
+    <form className={`footer-subscribe__input ${formClass}`} onSubmit={onSubmit}>
       <input
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className={`subscribe-input__field ${inputClass}`}
+        className={`footer-subscribe__input-field ${inputClass}`}
         type="email"
         required
         placeholder="Enter your email here"
       />
       <Button
         type="submit"
-        buttonClass={`subscribe-input__button ${buttonClass}`}
+        buttonClass={`footer-subscribe__input-button ${buttonClass}`}
         iconSrc={mailIcon}
         iconWidth={20}
         iconHeight={20}

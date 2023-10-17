@@ -1,11 +1,30 @@
+@import '../../../utils/mixins.scss';
+
 .descovery-card {
   display: flex;
   flex-direction: column;
   width: 330px;
   min-width: 260px;
   border-radius: 20px;
-  overflow: hidden;
   height: fit-content;
+
+  @include onDesktopLarge {
+    width: 300px;
+    min-width: 200px;
+  }
+
+  @include onTablet {
+    &:last-child {
+      display: none;
+    }
+  }
+
+  @include onMobile {
+    width: 260px;
+    &:last-child {
+      display: flex;
+    }
+  }
 
 
   &__image {
@@ -23,6 +42,8 @@
     height: 173px;
     padding: 20px 30px;
     background-color: var(--gray3B);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 
     &-title {
       font-weight: 600;

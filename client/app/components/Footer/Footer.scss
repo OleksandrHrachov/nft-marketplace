@@ -1,4 +1,4 @@
-@import '../../utils/mixins.scss';
+@import "../../utils/mixins.scss";
 
 .footer {
   background-color: var(--gray3B);
@@ -6,10 +6,10 @@
 
   &__container {
     position: relative;
-    padding: 40px 115px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     width: 100%;
     max-width: 1280px;
-    margin: 0 auto;
 
     &-inner {
       padding-bottom: 30px;
@@ -22,22 +22,36 @@
       justify-content: space-between;
       gap: 30px;
 
+      @include onTablet {
+        flex-direction: column;
+      }
 
       &-info {
         width: 245px;
+
+        @include onTablet {
+          width: 100%;
+        }
+
         &-logo {
           margin-bottom: 30px;
+
+          @include onMobile {
+            margin-bottom: 20px;
+          }
         }
 
         &-description {
           line-height: 22px;
           margin-bottom: 20px;
+          color: var(--grayCC);
         }
 
         &-social-links {
           &-title {
             line-height: 22px;
             margin-bottom: 15px;
+            color: var(--grayCC);
           }
 
           &-icon {
@@ -54,12 +68,21 @@
 
       &-explore {
         width: 150px;
+
+        @include onTablet {
+          width: 100%;
+        }
+
         &-title {
           font-weight: 700;
           font-size: 22px;
           line-height: 36px;
           margin-bottom: 25px;
           font-family: var(--font-space-mono);
+
+          @include onMobile {
+            margin-bottom: 20px;
+          }
         }
 
         &-links-wrapper {
@@ -70,6 +93,7 @@
         &-link {
           line-height: 22px;
           margin-bottom: 20px;
+          color: var(--grayCC);
 
           &:last-child {
             margin-bottom: 0;
@@ -80,6 +104,39 @@
       &-subscribe {
         width: 420px;
 
+        &-form {
+          width: 100%;
+
+          @include onTablet {
+            width: 420px;
+          }
+
+          @include onMobile {
+            width: 100%;
+            max-width: 315px;
+            flex-direction: column;
+          }
+        }
+
+        @include onMobile {
+          &-input {
+            display: block;
+            padding: 10px 20px;
+            height: auto;
+            margin-bottom: 16px;
+          }
+
+          &-button {
+            position: relative;
+            padding: 10px 20px;
+            height: auto;
+          }
+        }
+
+        @include onTablet {
+          width: 100%;
+        }
+
         &-title {
           font-weight: 700;
           font-size: 22px;
@@ -87,12 +144,22 @@
           margin-bottom: 25px;
           font-family: var(--font-space-mono);
           text-transform: capitalize;
+
+          @include onMobile {
+            margin-bottom: 20px;
+          }
         }
 
         &-description {
           line-height: 22px;
           max-width: 330px;
+          width: 100%;
           margin-bottom: 20px;
+          color: var(--grayCC);
+
+          @include onTablet {
+            max-width: 100%;
+          }
         }
       }
     }
@@ -100,6 +167,7 @@
     &-bottom {
       font-size: 12px;
       line-height: 13px;
+      color: var(--grayCC);
     }
   }
 }

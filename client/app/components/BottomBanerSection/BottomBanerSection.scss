@@ -1,3 +1,5 @@
+@import '../../utils/mixins.scss';
+
 .bottom-banner {
   width: 100%;
   height: 680px;
@@ -6,6 +8,10 @@
   position: relative;
   background: linear-gradient(var(--purple-0), var(--purple));
 
+  @include onMobile {
+    height: 590px;
+  }
+
   &__image-wrapper {
     position: absolute;
     top: 0;
@@ -13,6 +19,13 @@
     z-index: -1;
     width: 100%;
     height: 680px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include onMobile {
+      height: 590px;
+    }
   }
 
   &__image {
@@ -49,6 +62,11 @@
       font-size: 38px;
       line-height: 46px;
       margin-bottom: 30px;
+
+      @include onTablet {
+        font-size: 30px;
+      line-height: 40px;
+      }
     }
 
     &-button {
@@ -58,7 +76,7 @@
 
   &__timer {
     position: absolute;
-    right: 115px;
+    right: 0;
     padding: 30px;
     width: fit-content;
     background-color: var(--gray3B-05);
@@ -66,6 +84,12 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
+    font-family: var(--font-space-mono);
+
+    @include onMobile {
+      position: relative;
+      padding: 15px;
+    }
 
     &-title {
       font-size: 12px;

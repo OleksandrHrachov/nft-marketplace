@@ -7,6 +7,15 @@
     justify-content: space-between;
     margin-bottom: 60px;
 
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+
+    @include onMobile {
+      margin-bottom: 40px;
+      flex-direction: column;
+    }
+
     &-title {
       @include section-title;
       margin-bottom: 10px;
@@ -16,6 +25,19 @@
       font-size: 22px;
       line-height: 36px;
       text-transform: capitalize;
+
+      @include onDesktopLarge {
+        font-size: 18px;
+        line-height: 22px;
+      }
+
+      @include onTablet {
+        font-size: 16px;
+      }
+
+      @include onMobile {
+        margin-bottom: 20px;
+      }
     }
 
     &-button {
@@ -27,6 +49,16 @@
     display: flex;
     justify-content: space-between;
     gap: 30px;
+
+    @include onTablet {
+      justify-content: space-evenly;
+    }
+
+    @include onMobile {
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
 
     &-empty-list {
       text-align: center;

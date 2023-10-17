@@ -1,13 +1,21 @@
-@import './utils//mixins.scss';
+@import './utils/mixins.scss';
 
 :root {
   --primary-background: #2B2B2B;
   --gray3B: #3B3B3B;
   --gray3B-05: rgba(59, 59, 59, 0.5);
+  --gray3B-09: rgba(59, 59, 59, 0.9);
   --gray85: #858584;
+  --grayCC: #CCCCCC;
   --white: #fff;
   --purple: rgba(162,89,255, 1);
   --purple-0: rgba(162,89,255, 0);
+  --header-height-desktop: 100px;
+  --header-height-tablet: 54px;
+  --breakpoint-desktop-large: 1280px;
+  --breakpoint-desktop: 1200px;
+  --breakpoint-tablet: 1024px;
+  --breakpoint-mobile: 834px;
 }
 
 * {
@@ -26,7 +34,8 @@ body {
   flex-direction: column;
   margin: 0 auto;
   color: var(--white);
-
+  overflow: hidden;
+  
   @include scroll-bar;
 }
 
@@ -34,8 +43,24 @@ body {
   position: relative;
   padding: 80px 115px;
   width: 100%;
-  max-width: 1280px;
+  max-width: var(--breakpoint-desktop-large);
   margin: 0 auto;
+
+  @include onDesktopLarge {
+    padding-left: 90px;
+    padding-right: 90px;
+  }
+
+  @include onTablet {
+    padding: 40px 70px;
+    max-width: var(--breakpoint-tablet);
+  }
+
+  @include onMobile {
+    padding-left: 30px;
+    padding-right: 30px;
+    max-width: var(--breakpoint-mobile)
+  }
 }
 
 a {

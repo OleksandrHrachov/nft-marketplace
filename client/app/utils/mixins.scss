@@ -5,19 +5,13 @@
 }
 
 @mixin onTablet {
-  @media (min-width: 835px) and (max-width: 1080px) {
-    @content;
-  }
-}
-
-@mixin onDesktop {
-  @media (min-width: 1081px) and (max-width: 1200px) {
+  @media (max-width: 1024px) {
     @content;
   }
 }
 
 @mixin onDesktopLarge {
-  @media (min-width: 1201px) {
+  @media (max-width: 1200px) {
     @content;
   }
 }
@@ -27,6 +21,16 @@
   font-weight: 600;
   font-size: 38px;
   line-height: 46px;
+
+  @include onDesktopLarge {
+    font-size: 38px;
+    line-height: 46px;
+  }
+
+  @include onTablet{
+    font-size: 28px;
+    line-height: 40px;
+  }
 }
 
 @mixin link-underline {

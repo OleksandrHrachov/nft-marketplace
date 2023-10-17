@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Logo } from "../Logo";
 import "./Footer.scss";
 import { PageLinks } from "@/app/utils/endpoint";
-import { SubscribeInput } from "../SubscribeInput";
+import { SubscribeInput } from "./SubscribeInput";
 import youtubeIcon from "../../../public/youtubeLogo.svg";
 import twitterIcon from "../../../public/twitterLogo.svg";
 import instagramIcon from "../../../public/instagramLogo.svg";
@@ -75,7 +75,7 @@ export default async function Footer() {
 
   return (
     <footer className="footer">
-      <section className="footer__container">
+      <section className="container footer__container">
         <div className="footer__container-inner">
           <div className="footer__container-top">
             <div className="footer__container-top-info">
@@ -142,7 +142,11 @@ export default async function Footer() {
               <p className="footer__container-top-subscribe-description">
                 {subscribe.description}
               </p>
-              <SubscribeInput buttonClass="my-button" />
+              <SubscribeInput
+                formClass="footer__container-top-subscribe-form"
+                buttonClass="footer__container-top-subscribe-button"
+                inputClass="footer__container-top-subscribe-input"
+              />
             </div>
           </div>
         </div>

@@ -59,7 +59,7 @@ export default async function SubscribeSection() {
           <p className="subscribe__container-content-description">
             {subscribe.description}
           </p>
-          <SubscribeInput />
+          <SubscribeInput formClass={'subscribe__form'} buttonClass={'subscribe__button'} inputClass={'subscribe__input'} />
         </div>
       </div>
     </section>

@@ -63,7 +63,6 @@ export default async function Home() {
         linkId={bottomBanner[0].assetId}
       />
       )}
-      
       <HowItWorkSection />
       <SubscribeSection />
     </main>
