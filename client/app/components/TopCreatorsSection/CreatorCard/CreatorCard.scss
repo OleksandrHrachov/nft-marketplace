@@ -1,3 +1,5 @@
+@import "../../../utils/mixins.scss";
+
 .creator-card {
   position: relative;
   display: flex;
@@ -10,8 +12,19 @@
   border-radius: 20px;
   padding: 20px;
 
-  &__number {
+  @include onTablet {
+    flex-direction: row;
+    height: 100px;
+    width: 330px;
+  }
 
+  @include onMobile {
+    flex-direction: row;
+    height: 100px;
+    width: 280px;
+  }
+
+  &__number {
     &-wrapper {
       position: absolute;
       top: 20px;
@@ -23,6 +36,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
+      @include onTablet {
+        top: 12px;
+        left: 12px;
+      }
     }
 
     &-text {
@@ -32,12 +50,36 @@
 
   &__avatar {
     margin-bottom: 20px;
+    width: 120px;
+    height: 120px;
+
+    @include onTablet {
+      width: 60px;
+      height: 60px;
+      margin-right: 20px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include onTablet {
+      align-items: initial;
+    }
   }
 
   &__nick-name {
     font-weight: 600;
     font-size: 22px;
     line-height: 30px;
+
+    @include onMobile {
+      font-size: 18px;
+      line-height: 22px;
+    }
   }
 
   &__sales {
@@ -45,11 +87,21 @@
       line-height: 22px;
       color: var(--gray85);
       text-transform: capitalize;
+
+      @include onMobile {
+        font-size: 14px;
+        line-height: 16px;
+      }
     }
 
     &-number {
       line-height: 22px;
-      color: var(--white)
+      color: var(--white);
+
+      @include onMobile {
+        font-size: 14px;
+        line-height: 16px;
+      }
     }
   }
 }

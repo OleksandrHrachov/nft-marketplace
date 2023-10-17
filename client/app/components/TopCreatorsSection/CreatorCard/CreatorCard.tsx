@@ -32,11 +32,13 @@ export default function CreatorCard({
         mobileWidth={60}
       />
 
-      <span className="creator-card__nick-name">{nickName}</span>
-      <span className="creator-card__sales-text">
-        Total sales:{" "}
-        <span className="creator-card__sales-number">{`${totalSales} ETH`}</span>
-      </span>
+      <div className="creator-card__info">
+        <span className="creator-card__nick-name">{nickName}</span>
+        <span className="creator-card__sales-text">
+          Total sales:{" "}
+          <span className="creator-card__sales-number">{`${totalSales} ETH`}</span>
+        </span>
+      </div>
     </Link>
   );
 }

@@ -7,6 +7,15 @@
     justify-content: space-between;
     margin-bottom: 60px;
 
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+
+    @include onMobile {
+      margin-bottom: 40px;
+      flex-direction: column;
+    }
+
     &-title {
       @include section-title;
       margin-bottom: 10px;
@@ -16,6 +25,19 @@
       font-size: 22px;
       line-height: 36px;
       text-transform: capitalize;
+
+      @include onDesktopLarge {
+        font-size: 18px;
+        line-height: 22px;
+      }
+
+      @include onTablet {
+        font-size: 16px;
+      }
+
+      @include onMobile {
+        margin-bottom: 20px;
+      }
     }
 
     &-button {
@@ -33,17 +55,23 @@
     column-gap: 30px;
     row-gap: 30px;
 
-    // scroll-bar
+    @include onTablet {
+      grid-template-columns: repeat(auto-fill, 330px);
+      column-gap: 15px;
+      row-gap: 15px;
+    }
 
-    // @include onTablet {
-    //   max-height: 780px;
-    //   min-height: 240px;
-    //   overflow: hidden;
-    //   overflow-y: scroll;
-    //   overflow: overlay;
+    @include onMobile {
+      grid-template-columns: repeat(auto-fill, 280px);
+      column-gap: 15px;
+      row-gap: 15px;
+      max-height: 400px;
+      min-height: 240px;
+      overflow: hidden;
+      overflow-y: scroll;
 
-    //   @include scroll-bar;
-    // }
+      @include scroll-bar;
+    }
 
     &-empty-list {
       text-align: center;
