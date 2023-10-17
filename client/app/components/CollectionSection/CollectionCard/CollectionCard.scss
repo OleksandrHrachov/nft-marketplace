@@ -1,8 +1,28 @@
+@import "../../../utils/mixins.scss";
+
 .collection-card {
   width: 330px;
   min-width: 300px;
   display: flex;
   flex-direction: column;
+
+  @include onDesktopLarge {
+    width: 300px;
+    min-width: 200px;
+  }
+
+  @include onTablet {
+    &:last-child {
+      display: none;
+    }
+  }
+
+  @include onTablet {
+    width: 260px;
+    &:last-child {
+      display: flex;
+    }
+  }
 
   &__main {
     &-link {
@@ -14,6 +34,10 @@
       height: 330px;
       border-radius: 20px;
       overflow: hidden;
+
+      @include onDesktopLarge {
+        height: auto;
+      }
     }
   }
 
@@ -24,10 +48,15 @@
     margin-bottom: 15px;
 
     &-link {
-      width: 100px;
-      height: 100px;
+      max-width: 100px;
+      max-height: 100px;
       border-radius: 20px;
       overflow: hidden;
+
+      @include onDesktopLarge {
+        max-width: 60px;
+        max-height: 60px;
+      }
     }
     &-image {
       width: 100%;
@@ -47,6 +76,11 @@
     font-weight: 700;
     font-size: 22px;
     line-height: 36px;
+
+    @include onDesktopLarge {
+      width: 60px;
+      max-height: 60px;
+    }
   }
 
   &__descr {
@@ -68,7 +102,6 @@
       &-name {
         line-height: 22px;
       }
-
     }
   }
 }
