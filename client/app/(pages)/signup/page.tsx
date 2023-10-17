@@ -3,7 +3,7 @@ import "./SignUp.scss";
 
 export default function SignUp() {
   return (
-    <div className="sign-up">
+    <div className="container sign-up">
       <h2 className="sign-up__title">
       At the moment there is no registration and everyone can view all available content.
       </h2>

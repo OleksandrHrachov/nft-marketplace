@@ -1,4 +1,23 @@
+@import '../../utils/mixins.scss';
+
 .logo {
-  height: 32px;
-  width: 244px;
+  @include onTablet {
+    height: 24px;
+    width: 182px;
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &__image {
+    width: 244px;
+    height: 32px;
+    @include onTablet {
+      height: 24px;
+      width: 182px;
+    }
+  }
 }
