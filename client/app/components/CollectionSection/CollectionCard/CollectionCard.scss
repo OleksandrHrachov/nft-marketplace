@@ -17,7 +17,7 @@
     }
   }
 
-  @include onTablet {
+  @include onMobile {
     width: 260px;
     &:last-child {
       display: flex;
