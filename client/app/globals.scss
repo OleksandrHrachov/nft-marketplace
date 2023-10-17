@@ -1,4 +1,4 @@
-@import './utils//mixins.scss';
+@import './utils/mixins.scss';
 
 :root {
   --primary-background: #2B2B2B;
@@ -44,6 +44,11 @@ body {
   width: 100%;
   max-width: var(--breakpoint-desktop-large);
   margin: 0 auto;
+
+  @include onDesktopLarge {
+    padding-left: 90px;
+    padding-right: 90px;
+  }
 
   @include onTablet {
     padding: 40px 70px;
