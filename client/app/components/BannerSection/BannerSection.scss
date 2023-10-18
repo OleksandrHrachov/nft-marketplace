@@ -6,8 +6,6 @@
   justify-content: space-between;
   gap: 30px;
 
-  
-
   &__content {
     max-width: 510px;
 
@@ -142,6 +140,7 @@
     }
 
     &-banner {
+      display: flex;
       flex-grow: 1;
       max-width: 100%;
       height: auto;
