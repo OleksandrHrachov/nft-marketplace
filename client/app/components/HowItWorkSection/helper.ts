@@ -1,10 +1,8 @@
-import { NextResponse } from "next/server";
-import { ICreator, IHowItWorkCard } from "../../../types";
-
-import { getClient } from "../../../libs/client";
 import { gql } from "@apollo/client";
+import { getClient } from "@/app/libs/client";
+import { IHowItWorkCard } from "@/app/types";
 
-export async function GET(req: Request) {
+export async function getCards(): Promise<IHowItWorkCard[]> {
   const query = gql`
     query {
       howItWorkCards {
@@ -26,5 +24,5 @@ export async function GET(req: Request) {
       return { howItWorkCards: [] };
     });
 
-  return NextResponse.json(cards.howItWorkCards);
+  return cards.howItWorkCards;
 }

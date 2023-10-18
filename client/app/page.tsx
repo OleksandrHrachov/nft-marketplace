@@ -7,40 +7,7 @@ import { DiscoverNftSection } from "./components/DiscoverNftSection";
 import { HowItWorkSection } from "./components/HowItWorkSection";
 import { SubscribeSection } from "./components/SubscribeSection";
 import { TopCreatorsSection } from "./components/TopCreatorsSection";
-import { getClient } from "./libs/client";
-import { IBanner } from "./types";
-
-import { gql } from "@apollo/client";
-
-export async function getBottomBanner(): Promise<IBanner[] | []> {
-  const query = gql`
-    query {
-      bottomBanner {
-        _id
-        imgUrl
-        assetName
-        assetId
-        createdBy {
-          nickName
-          avatarUrl
-          _id
-        }
-      }
-    }
-  `;
-
-  const bottomBanner = await getClient()
-    .query<{ bottomBanner: IBanner[] }>({
-      query,
-    })
-    .then((res) => res.data.bottomBanner)
-    .catch((e) => {
-      console.log("ERROR home-banner-route =>", e);
-      return [];
-    });
-
-  return bottomBanner;
-}
+import { getBottomBanner } from "./helper";
 
 export default async function Home() {
   const bottomBanner = await getBottomBanner();

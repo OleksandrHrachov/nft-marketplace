@@ -1,33 +1,7 @@
-import { ICategory } from "@/app/types";
 import "./BrowseCategoriesSection.scss";
 import { CategoryCard } from "./CategoryCard";
 import { BASE_URL } from "@/app/utils/endpoint";
-import { gql } from "@apollo/client";
-import { getClient } from "@/app/libs/client";
-
-export async function getCategories(): Promise<ICategory[] | []> {
-  const query = gql`
-    query {
-      categories {
-        category
-        imageUrl
-        iconUrl
-      }
-    }
-  `;
-
-  const categories = await getClient()
-    .query<{ categories: ICategory[] }>({
-      query,
-    })
-    .then((res) => res.data)
-    .catch((e) => {
-      console.log("ERROR home-categories-route =>", e);
-      return { categories: [] };
-    });
-
-  return categories.categories
-};
+import { getCategories } from "./helper";
 
 export default async function BrowseCategoriesSection() {
   const categories = await getCategories();

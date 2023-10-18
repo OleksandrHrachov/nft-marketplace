@@ -1,16 +1,15 @@
-import { NextResponse } from "next/server";
-import { IBanner } from "../../../types";
-
-import { getClient } from "../../../libs/client";
 import { gql } from "@apollo/client";
+import { IBanner } from "./types";
+import { getClient } from "./libs/client";
 
-export async function GET(req: Request) {
+export async function getBottomBanner(): Promise<IBanner[] | []> {
   const query = gql`
     query {
       bottomBanner {
         _id
         imgUrl
         assetName
+        assetId
         createdBy {
           nickName
           avatarUrl
@@ -21,14 +20,14 @@ export async function GET(req: Request) {
   `;
 
   const bottomBanner = await getClient()
-    .query<{ bottomBanner: IBanner }>({
+    .query<{ bottomBanner: IBanner[] }>({
       query,
     })
     .then((res) => res.data.bottomBanner)
     .catch((e) => {
       console.log("ERROR home-banner-route =>", e);
-      return {};
+      return [];
     });
 
-  return NextResponse.json(bottomBanner);
+  return bottomBanner;
 }

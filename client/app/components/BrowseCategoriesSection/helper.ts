@@ -1,10 +1,8 @@
-import { NextResponse } from "next/server";
-import { ICategory } from "../../../types";
-
-import { getClient } from "../../../libs/client";
 import { gql } from "@apollo/client";
+import { getClient } from "@/app/libs/client";
+import { ICategory } from "@/app/types";
 
-export async function GET(req: Request) {
+export async function getCategories(): Promise<ICategory[] | []> {
   const query = gql`
     query {
       categories {
@@ -25,5 +23,5 @@ export async function GET(req: Request) {
       return { categories: [] };
     });
 
-  return NextResponse.json(categories.categories);
+  return categories.categories
 };

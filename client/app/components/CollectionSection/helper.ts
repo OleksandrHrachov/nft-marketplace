@@ -1,10 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
-import { IAsset } from "../../../types";
-
-import { getClient } from "../../../libs/client";
 import { gql } from "@apollo/client";
+import { getClient } from "@/app/libs/client";
+import { IAsset } from "@/app/types";
 
-export async function GET(req: NextRequest) {
+export async function getCollections():Promise<Array<IAsset[]>> {
   const query = gql`
     query {
       assetsCollection(tags: ["animal", "robot", "mushroom"]) {
@@ -47,5 +45,5 @@ export async function GET(req: NextRequest) {
     }
   });
 
-  return NextResponse.json([collection1, collection2, collection3]);
+  return [collection1, collection2, collection3];
 }

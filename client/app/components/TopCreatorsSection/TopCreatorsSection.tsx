@@ -2,35 +2,8 @@ import { CustomLink } from "../CustomLink";
 import rocketIcon from "../../../public/rocketIcon.svg";
 import "./TopCreatorsSection.scss";
 import { CreatorCard } from "./CreatorCard";
-import { ICreator } from "@/app/types";
 import { BASE_URL } from "@/app/utils/endpoint";
-
-import { gql } from "@apollo/client";
-import { getClient } from "@/app/libs/client";
-
-export async function getCreators(): Promise<ICreator[]> {
-  const query = gql`
-    query {
-      artists {
-        _id
-        nickName
-        avatarUrl
-        totalSales
-      }
-    }
-  `;
-
-  const creators = await getClient()
-    .query<{ artists: ICreator[] }>({
-      query,
-    })
-    .then((res) => res.data)
-    .catch((e) => {
-      console.log("ERROR home-creators-route =>", e);
-      return { artists: [] };
-    });
-  return creators.artists;
-}
+import { getCreators } from "./helper";
 
 export default async function TopCreatorsSection() {
   const creators = (await getCreators()).slice(0, 12);
