@@ -1,3 +1,5 @@
+@import '../../../../utils/mixins.scss';
+
 .creator-descovery-card {
   display: flex;
   flex-direction: column;
@@ -6,6 +8,9 @@
   overflow: hidden;
   height: fit-content;
 
+  @include onMobile {
+    width: 270px;
+  }
 
   &__image {
     width: 100%;

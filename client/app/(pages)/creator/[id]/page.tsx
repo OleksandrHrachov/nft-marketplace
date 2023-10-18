@@ -120,6 +120,7 @@ export default async function CreatorPage({ params: { id } }: IProps) {
                       target="_blank"
                     >
                       <Image
+                        className="creator__links-icon-image"
                         src={socialLinks[link.linkName]}
                         alt={link.linkName}
                         width={32}
