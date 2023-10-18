@@ -11,13 +11,18 @@
     column-gap: 20px;
     row-gap: 30px;
 
-    max-height: 780px;
-    min-height: 240px;
+    max-height: 1800px;
+    min-height: 650px;
     overflow: hidden;
     overflow-y: scroll;
     overflow: overlay;
 
     @include scroll-bar;
+
+    @include onMobile {
+      max-height: 650px;
+      grid-template-columns: repeat(auto-fill, 280px);
+    }
 
     &-empty-list {
       text-align: center;

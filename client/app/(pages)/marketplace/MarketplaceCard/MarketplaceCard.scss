@@ -1,3 +1,5 @@
+@import '../../../utils/mixins.scss';
+
 .marketplace-card {
   display: flex;
   flex-direction: column;
@@ -5,6 +7,10 @@
   border-radius: 20px;
   overflow: hidden;
   height: fit-content;
+
+  @include onMobile {
+    width: 280px;
+  }
 
 
   &__image {
