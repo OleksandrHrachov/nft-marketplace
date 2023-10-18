@@ -35,7 +35,7 @@ export default async function Rankings() {
       </section>
       <section className="rankings__list">
         <div className="rankings__list-head">
-          <span className="rankings__list-head-number"><span>*</span></span>
+          <span className="rankings__list-head-number"><span>#</span></span>
           <span className="rankings__list-head-main-info">Artist</span>
           <span className="rankings__list-head-nft-sold">NFTs Sold</span>
           <span className="rankings__list-head-total-sales">Volume</span>
@@ -57,7 +57,7 @@ export default async function Rankings() {
                   alt={creator.nickName}
                   width={60}
                   height={60}
-                  tableWidth={24}
+                  tableWidth={32}
                   mobileWidth={24}
                 />
                 <span className="rankings__list-item-main-info-name">
