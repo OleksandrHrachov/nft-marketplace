@@ -1,10 +1,8 @@
-import { NextResponse } from "next/server";
-import { IAsset } from "../../../types";
-
-import { getClient } from "../../../libs/client";
 import { gql } from "@apollo/client";
+import { getClient } from "@/app/libs/client";
+import { IAsset } from "@/app/types";
 
-export async function GET(req: Request) {
+export async function getAssets(): Promise<IAsset[]> {
   const query = gql`
     query {
       assets{
@@ -32,5 +30,5 @@ export async function GET(req: Request) {
       return {assets: []}
     })
 
-    return NextResponse.json(assets.assets);
+    return assets.assets;
 };

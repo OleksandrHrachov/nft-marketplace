@@ -1,10 +1,8 @@
-import { NextResponse } from "next/server";
-import { ISudscribe } from "../../../types";
-
-import { getClient } from "../../../libs/client";
 import { gql } from "@apollo/client";
+import { getClient } from "@/app/libs/client";
+import { ISudscribe } from "@/app/types";
 
-export async function GET(req: Request) {
+export async function getSubscribe(): Promise<ISudscribe> {
   const query = gql`
     query {
       subscribe {
@@ -16,18 +14,18 @@ export async function GET(req: Request) {
   `;
 
   const subscribe = await getClient()
-    .query<{ subscribe: ISudscribe }>({
+    .query<{ subscribe: ISudscribe[] }>({
       query,
     })
-    .then((res) => res.data.subscribe)
+    .then((res) => res.data.subscribe[0])
     .catch((e) => {
       console.log("ERROR home-subscribe-route =>", e);
-      return [{
+      return {
         imgUrl: "",
         title: "",
         description: "",
-      }];
+      };
     });
 
-  return NextResponse.json(subscribe);
+  return subscribe;
 }

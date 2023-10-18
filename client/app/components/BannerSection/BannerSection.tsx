@@ -1,41 +1,10 @@
 import "./BannerSection.scss";
 import rocketIcon from "../../../public/rocketIcon.svg";
-import { IBanner } from "../../types";
 import { BASE_URL, PageLinks } from "../../utils/endpoint";
 import { CustomLink } from "../CustomLink";
 import { ImageComponent } from "../ImageComponent";
 import Link from "next/link";
-
-import { gql } from "@apollo/client";
-import { getClient } from "@/app/libs/client";
-
-export async function getBanner(): Promise<IBanner | null> {
-  const query = gql`
-    query {
-      banner {
-        _id
-        assetName
-        createdBy
-        imgUrl
-        creatorNickName
-        creatorAvatarUrl
-        assetId
-      }
-    }
-  `;
-
-  const banner = await getClient()
-    .query<{ banner: IBanner }>({
-      query,
-    })
-    .then((res) => res.data.banner)
-    .catch((e) => {
-      console.log("ERROR home-banner-route =>", e);
-      return null;
-    });
-
-  return banner;
-}
+import { getBanner } from "./helper";
 
 export default async function BannerSection() {
   const bannerData = await getBanner();

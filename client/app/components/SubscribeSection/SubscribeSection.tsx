@@ -2,38 +2,7 @@ import { BASE_URL } from "@/app/utils/endpoint";
 import { ImageComponent } from "../ImageComponent";
 import "./SubscribeSection.scss";
 import { SubscribeInput } from "../SubscribeInput";
-import { ISudscribe } from "@/app/types";
-
-import { gql } from "@apollo/client";
-import { getClient } from "@/app/libs/client";
-
-export async function getSubscribe(): Promise<ISudscribe> {
-  const query = gql`
-    query {
-      subscribe {
-        imgUrl
-        title
-        description
-      }
-    }
-  `;
-
-  const subscribe = await getClient()
-    .query<{ subscribe: ISudscribe[] }>({
-      query,
-    })
-    .then((res) => res.data.subscribe[0])
-    .catch((e) => {
-      console.log("ERROR home-subscribe-route =>", e);
-      return {
-        imgUrl: "",
-        title: "",
-        description: "",
-      };
-    });
-
-  return subscribe;
-}
+import { getSubscribe } from "./helper";
 
 export default async function SubscribeSection() {
   const subscribe = await getSubscribe();
