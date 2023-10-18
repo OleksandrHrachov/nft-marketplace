@@ -1,3 +1,5 @@
+@import "../../../utils/mixins.scss";
+
 .nft {
   display: flex;
   flex-grow: 1;
@@ -14,6 +16,11 @@
       margin: 0 auto;
       border-radius: 40px;
       overflow: hidden;
+
+      @include onMobile {
+        width: 320px;
+        height: auto;
+      }
 
       &-image {
         display: block;
@@ -32,6 +39,17 @@
         font-size: 51px;
         line-height: 56px;
         margin-bottom: 10px;
+        text-transform: capitalize;
+
+        @include onTablet {
+          font-size: 38px;
+          line-height: 46px;
+        }
+
+        @include onMobile {
+          font-size: 28px;
+          line-height: 40px;
+        }
       }
 
       &-created-at {
@@ -39,6 +57,12 @@
         line-height: 36px;
         text-transform: capitalize;
         margin-bottom: 30px;
+        color: var(--gray85);
+
+        @include onTablet {
+          font-size: 16px;
+          line-height: 22px;
+        }
       }
 
       &-button {
@@ -46,10 +70,21 @@
         position: absolute;
         right: 115px;
         top: 40px;
+
+        @include onTablet {
+          position: relative;
+          top: 0;
+          right: initial;
+        }
       }
 
       &-creator {
         margin-bottom: 30px;
+
+        @include onMobile {
+          margin-bottom: 20px;
+        }
+
         &-title {
           font-family: var(--font-space-mono);
           font-weight: 700;
@@ -57,6 +92,11 @@
           line-height: 36px;
           margin-bottom: 10px;
           color: var(--gray85);
+
+          @include onMobile {
+            font-size: 16px;
+            line-height: 22px;
+          }
         }
 
         &-inner {
@@ -68,12 +108,22 @@
           width: 60px;
           height: 60px;
           margin-right: 12px;
+
+          @include onMobile {
+            width: 24px;
+            height: 24px;
+          }
         }
 
         &-name {
           font-weight: 600;
           font-size: 22px;
           line-height: 30px;
+
+          @include onMobile {
+            font-size: 16px;
+            line-height: 24px;
+          }
         }
       }
 
@@ -85,11 +135,21 @@
           line-height: 36px;
           margin-bottom: 10px;
           color: var(--gray85);
+
+          @include onMobile {
+            font-size: 16px;
+            line-height: 22px;
+          }
         }
 
         &-desc {
           font-size: 22px;
           line-height: 36px;
+
+          @include onMobile {
+            font-size: 16px;
+            line-height: 22px;
+          }
         }
       }
     }

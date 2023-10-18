@@ -52,7 +52,7 @@ export default async function NftPage({ params: { id } }: IProps) {
                   alt={asset.createdBy.nickName}
                   width={60}
                   height={60}
-                  tableWidth={24}
+                  tableWidth={60}
                   mobileWidth={24}
                 />
                 <span className="nft__asset-info-creator-name">
