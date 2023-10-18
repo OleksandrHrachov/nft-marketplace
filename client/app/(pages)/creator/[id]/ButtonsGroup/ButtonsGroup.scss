@@ -1,4 +1,17 @@
+@import '../../../../utils/mixins.scss';
+
 .buttons-group {
   display: flex;
   gap: 20px;
+
+  @include onMobile {
+    flex-direction: column;
+  }
+
+  &__copy-button,
+  &__follow-button {
+    @include onMobile {
+      width: 100%;
+    }
+  }
 }

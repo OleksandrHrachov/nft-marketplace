@@ -33,7 +33,7 @@ export default function ButtonsGroup({ creatortId }: IProps) {
         </Button>
       </div>
       <div className="buttons-group__follow">
-        <Button variant="outline">Follow</Button>
+        <Button buttonClass="buttons-group__follow-button" variant="outline">Follow</Button>
       </div>
     </div>
   );

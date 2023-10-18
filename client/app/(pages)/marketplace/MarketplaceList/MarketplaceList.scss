@@ -21,7 +21,7 @@
 
     @include onMobile {
       max-height: 650px;
-      grid-template-columns: repeat(auto-fill, 280px);
+      grid-template-columns: repeat(auto-fill, 270px);
     }
 
     &-empty-list {
